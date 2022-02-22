@@ -1,0 +1,12 @@
+1) Write a GHA worflow.yml for Continuous Testing
+When a Pull Request is opened to merge into main or dev branches
+We want to run tests that we have written
+
+name: practice-continous-test
+on: pull request
+for specific branches: main, dev
+Steps
+    Checkout repository
+    Install node v16.13.1
+    npm install
+    npm run test
