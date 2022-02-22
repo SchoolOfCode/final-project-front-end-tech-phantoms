@@ -1,0 +1,23 @@
+1) Write a GHA workflow.yml for Continuous Testing
+When a Pull Request is opened to merge into main or dev branches
+We want to run tests that we have written
+
+name: practice-continuous-test
+on: pull request
+for specific branches: main, dev
+Steps
+    Checkout repository
+    Install node v16.13.1
+    npm install
+    npm run test
+
+2) Write a GHA workflow.yml for Continuous Delivery/Deployment
+After practice-continuous-test passes
+We want to build and deploy to Netlify
+
+Figure out:
+- how to make job dependent on previous job completion (deploy after tests success) https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idneeds
+    - build in one .yml file?
+- how to build and deploy to Netlify using a workflow.yml 
+    - research how to deploy your Next.js app on Netlify using Github Actions (https://thedaviddias.dev/blog/how-to-deploy-your-nextjs-app-on-netlify-using-github-actions/)
+    - GHA marketplace for a Actions plugin (https://github.com/marketplace/actions/netlify-actions)
