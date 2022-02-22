@@ -2,7 +2,7 @@
 When a Pull Request is opened to merge into main or dev branches
 We want to run tests that we have written
 
-name: practice-continous-test
+name: practice-continuous-test
 on: pull request
 for specific branches: main, dev
 Steps
