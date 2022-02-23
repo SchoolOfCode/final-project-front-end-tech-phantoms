@@ -17,7 +17,9 @@ We want to build and deploy to Netlify
 
 Figure out:
 - how to make job dependent on previous job completion (deploy after tests success) https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idneeds
-    - build in one .yml file?
+    - build two jobs in one .yml file, first job tests, second job will build and deploy
 - how to build and deploy to Netlify using a workflow.yml 
     - research how to deploy your Next.js app on Netlify using Github Actions (https://thedaviddias.dev/blog/how-to-deploy-your-nextjs-app-on-netlify-using-github-actions/)
-    - GHA marketplace for a Actions plugin (https://github.com/marketplace/actions/netlify-actions)
+    - we don't use any Actions but GHA marketplace link for a Netlify Actions plugin (https://github.com/marketplace/actions/netlify-actions)
+
+We need separate into two workflow files
