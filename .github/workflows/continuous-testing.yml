@@ -27,7 +27,7 @@ jobs:
     needs: run-tests
     steps:
       - name: 📦 Build project
-      - run: npm run build --if-present
+        run: npm run build --if-present
       # Deploy to Netlify with a personalized message
       - name: 🚀 Deploy to Netlify
         id: deploy-netlify
