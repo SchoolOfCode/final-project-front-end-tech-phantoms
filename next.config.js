@@ -8,6 +8,10 @@
 
 module.exports = {
   images: {
-    domains: ["lh3.googleusercontent.com", "cdn.icon-icons.com"],
+    domains: [
+      "lh3.googleusercontent.com",
+      "cdn.icon-icons.com",
+      "s.gravatar.com",
+    ],
   },
 };

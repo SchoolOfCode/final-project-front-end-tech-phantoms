@@ -1,6 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import NavBar from "../Components/NavBar";
+import SearchBar from "../Components/Searchbar";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <NavBar />
+        <SearchBar></SearchBar>
         <h2 className={styles.title}>Welcome to Phantom Kitchen</h2>
       </main>
     </div>
