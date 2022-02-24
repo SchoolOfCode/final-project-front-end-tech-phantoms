@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0";
+import NavBar from "../Components/NavBar";
 
 export default function Home() {
   const { user, error, isLoading } = useUser();
@@ -32,10 +33,8 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+        <NavBar />
         <h2 className={styles.title}>Welcome to Phantom Kitchen</h2>
-        <Link href="/api/auth/[...auth0]" as="/api/auth/login">
-          <a>LOGIN</a>
-        </Link>
       </main>
     </div>
   );
