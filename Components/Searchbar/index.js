@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-function SearchBar() {
+function SearchBar({ handleFetch }) {
   const [input, setInput] = useState("");
 
   function handleChange(event) {
