@@ -1,5 +1,3 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0";
 
@@ -12,7 +10,11 @@ export default function Home() {
   if (user) {
     return (
       <div>
-        Welcome, {user.name}!
+        <p>
+          Welcome, {user.name}!
+          <br />
+          Your name is {user.name}, your email is {user.email}.
+        </p>
         <Link href="/api/auth/[...auth0]" as="/api/auth/logout">
           <a>LOGOUT</a>
         </Link>
@@ -21,18 +23,9 @@ export default function Home() {
   }
 
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Phantom Kitchen</title>
-        <meta
-          name="description"
-          content="Find recipes and create a meal plan"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h2 className={styles.title}>Welcome to Phantom Kitchen</h2>
+    <div>
+      <main>
+        <p>You are not logged in.</p>
         <Link href="/api/auth/[...auth0]" as="/api/auth/login">
           <a>LOGIN</a>
         </Link>
