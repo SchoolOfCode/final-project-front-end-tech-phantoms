@@ -11,6 +11,14 @@ function NavBar() {
   if (user) {
     return (
       <>
+        <Image
+          height={50}
+          width={50}
+          alt={"Phantom logo"}
+          src={
+            "https://cdn.icon-icons.com/icons2/1897/PNG/512/ghost_120956.png"
+          }
+        />
         <div>Phantom Kitchen</div>
         <Image height={50} width={50} src={user.picture} alt="User Image" />
         <p>You are in</p>
@@ -23,7 +31,16 @@ function NavBar() {
 
   return (
     <>
+      <Image
+        height={50}
+        width={50}
+        alt={"Phantom logo"}
+        src={"https://cdn.icon-icons.com/icons2/1897/PNG/512/ghost_120956.png"}
+      />
       <div>Phantom Kitchen</div>
+      <Link href="/api/auth/[...auth0]" as="/api/auth/login">
+        <a>Sign up</a>
+      </Link>
       <Link href="/api/auth/[...auth0]" as="/api/auth/login">
         <a>LOGIN</a>
       </Link>
