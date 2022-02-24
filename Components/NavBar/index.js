@@ -20,11 +20,10 @@ function NavBar() {
           }
         />
         <div>Phantom Kitchen</div>
-        <Image height={50} width={50} src={user.picture} alt="User Image" />
-        <p>You are in</p>
-        <Link href="/api/auth/[...auth0]" as="/api/auth/logout">
-          <a>LOGOUT</a>
+        <Link href="/profile" passHref>
+          <Image height={50} width={50} src={user.picture} alt="User Image" />
         </Link>
+        <p>You are in</p>
       </>
     );
   }
