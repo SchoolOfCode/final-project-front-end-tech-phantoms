@@ -1,26 +1,8 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import Link from "next/link";
-import { useUser } from "@auth0/nextjs-auth0";
 import NavBar from "../Components/NavBar";
 
 export default function Home() {
-  const { user, error, isLoading } = useUser();
-
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>{error.message}</div>;
-
-  if (user) {
-    return (
-      <div>
-        Welcome, {user.name}!
-        <Link href="/api/auth/[...auth0]" as="/api/auth/logout">
-          <a>LOGOUT</a>
-        </Link>
-      </div>
-    );
-  }
-
   return (
     <div className={styles.container}>
       <Head>
