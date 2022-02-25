@@ -12,6 +12,7 @@ module.exports = {
       "lh3.googleusercontent.com",
       "cdn.icon-icons.com",
       "s.gravatar.com",
+      "www.edamam.com",
     ],
   },
 };
