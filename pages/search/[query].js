@@ -1,5 +1,6 @@
 import React from "react";
 import NavBar from "../../Components/NavBar";
+import Recipes from "../../Components/Recipes";
 import SearchBar from "../../Components/SearchBar";
 
 function searchResults({ data }) {
@@ -7,7 +8,7 @@ function searchResults({ data }) {
     <>
       <NavBar />
       <SearchBar></SearchBar>
-      <p>{"Fetch Results:" + JSON.stringify(data)}</p>
+      <Recipes data={data} />
     </>
   );
 }
@@ -29,7 +30,7 @@ export async function getServerSideProps(context) {
 
   //feed our component props at pre-render time
   return {
-    props: { data },
+    props: { data: data.hits },
   };
 }
 
