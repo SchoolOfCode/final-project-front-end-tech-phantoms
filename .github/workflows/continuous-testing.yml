@@ -6,7 +6,7 @@ on:
       - 'dev'
 jobs:
   run-tests:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       # Cache node modules and next folder
@@ -20,5 +20,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: "16.13.1"
+      - run: pwd
+      - run: rm package-lock.json
+      - run: ls -a
       - run: npm install
       - run: npm run test
