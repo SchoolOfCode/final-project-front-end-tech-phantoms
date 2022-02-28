@@ -7,7 +7,7 @@ function searchResults({ data }) {
   return (
     <>
       <NavBar />
-      <SearchBar></SearchBar>
+      <SearchBar />
       <Recipes data={data} />
     </>
   );
