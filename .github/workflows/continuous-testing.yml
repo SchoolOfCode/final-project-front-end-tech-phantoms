@@ -21,6 +21,7 @@ jobs:
         with:
           node-version: "16.13.1"
       - run: pwd
+      - run: ls -a
       - run: rm package-lock.json
       - run: ls -a
       - run: npm install
