@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import NavBar from "../Components/NavBar";
 import SearchBar from "../Components/SearchBar";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -19,6 +20,9 @@ export default function Home() {
         <NavBar />
         <SearchBar></SearchBar>
         <h2 className={styles.title}>Welcome to Phantom Kitchen</h2>
+        <Link href="/mealPlanner" passHref>
+          <button>Meal Planner</button>
+        </Link>
       </main>
     </div>
   );

@@ -13,6 +13,9 @@ module.exports = {
       "cdn.icon-icons.com",
       "s.gravatar.com",
       "www.edamam.com",
+      "www.marthastewart.com",
+      "food52.com",
+      "www.foodnetwork.com",
     ],
   },
 };
