@@ -1,7 +1,18 @@
-// import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const RecipeCard = ({ recipe }) => {
+  const [recipeID, setRecipeID] = useState("");
+
+  function getRecipeID() {
+    let uri = recipe.uri;
+    let stringID = uri.substr(-32);
+    console.log(stringID);
+    setRecipeID(stringID);
+  }
+  //trying to save the ID in a state to pass it down through the route so we can use it in getServerSideProps in [recipeID].
+  //At the moment the state is blank and not the actual id, the id flashes in the console for a second but we get error 404. TRy useEffect on page render
   return (
     <div>
       <div>
@@ -15,6 +26,10 @@ const RecipeCard = ({ recipe }) => {
 
       <div>
         <h2>{recipe.label}</h2>
+        <Link href={"/recipe_info/" + recipeID} passHref>
+          <button onClick={getRecipeID}>More Info</button>
+        </Link>
+
         <Image
           height={50}
           width={50}

@@ -1,7 +1,7 @@
 import RecipeDetails from "../../Components/RecipeDetails";
 import React from "react";
 
-//TODO:convert recipename.js into a dynamic route
+//TODO:convert recipeID.js into a dynamic route
 
 const RecipeInfoLayout = () => {
   return (
