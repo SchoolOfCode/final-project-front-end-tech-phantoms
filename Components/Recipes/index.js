@@ -7,7 +7,7 @@ const Recipes = ({ data }) => {
       {data.map((item) => {
         return (
           <>
-            <RecipeCard recipe={item.recipe} />
+            <RecipeCard uri={item.recipe.uri} recipe={item.recipe} />
           </>
         );
       })}

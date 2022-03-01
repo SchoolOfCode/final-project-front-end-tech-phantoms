@@ -1,9 +1,11 @@
 import React from "react";
 import Image from "next/image";
 
-//TODO: get data from edamam api to replace mock data
+//TODO: Once the data has been fetched get it as a prop
+// access the data to replace our mock data
+//TODO: Create save recipe button, that calls a function to do a patch request.
 
-const RecipeDetails = ({onClick}) => {
+const RecipeDetails = ({ onClick }) => {
   return (
     <div>
       {/* <Image alt="Recipe banner"></Image> */}
