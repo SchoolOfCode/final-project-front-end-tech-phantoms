@@ -2,7 +2,8 @@ import React from "react";
 import Image from "next/image";
 
 //TODO: get data from edamam api to replace mock data
-const RecipeDetails = () => {
+
+const RecipeDetails = ({onClick}) => {
   return (
     <div>
       {/* <Image alt="Recipe banner"></Image> */}
@@ -29,7 +30,7 @@ const RecipeDetails = () => {
       <button>Read Instructions</button>
       <p>on Website Name</p>
       <hr />
-      <button>Save recipe</button>
+      <button onClick={onClick}>Save recipe</button>
     </div>
   );
 };
