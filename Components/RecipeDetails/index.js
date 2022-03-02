@@ -1,8 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import SaveRecipeButton from "../SaveRecipeButton";
 
-const RecipeDetails = ({ onClick, data }) => {
+const RecipeDetails = ({ data, recipeID }) => {
   return (
     <div>
       <Image
@@ -56,7 +57,7 @@ const RecipeDetails = ({ onClick, data }) => {
       </Link>
       <p>on {data.source}</p>
       <hr />
-      <button onClick={onClick}>Save recipe</button>
+      <SaveRecipeButton disabled={true} recipeID={recipeID}/>
     </div>
   );
 };
