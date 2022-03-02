@@ -7,13 +7,18 @@ import {
   dinner as dr,
 } from "../../mealPlannerDb";
 import { useState } from "react";
+import AddMealModal from "../AddMealModal";
 
 function MealPlannerCard() {
   const [breakfast, setBreakfast] = useState(bf);
   const [lunch, setLunch] = useState(lh);
   const [dinner, setDinner] = useState(dr);
+  const [show, setShow] = useState(false);
 
-  function handleAdd() {}
+
+  function handleAdd() {
+      setShow(true);
+  }
 
   function handleDeleteBf(id) {
     const newBf = breakfast.filter((item) => {
