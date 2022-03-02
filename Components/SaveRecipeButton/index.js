@@ -17,6 +17,7 @@ function SaveRecipeButton({ recipeID }) {
       recipeID;
     const message = await fetch(uri, {
       method: "POST",
+      mode: "no-cors",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
