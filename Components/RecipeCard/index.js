@@ -5,7 +5,6 @@ import Link from "next/link";
 //TODO: Create saved recipe button to call a function that does a patch request
 
 const RecipeCard = ({ recipe, uri }) => {
-  console.log(uri.substr(-32));
   let recipeID = uri.substr(-32);
 
   return (
