@@ -1,5 +1,7 @@
 import NavBar from "../Components/NavBar";
 import MealPlannerCard from "../Components/MealPlannerCard";
+import AddMealModal from "../pages/AddMealModal";
+import { useState } from "react";
 
 export async function getServerSideProps(context) {
   const res = await fetch("http://localhost:3001/savedRecipes");
@@ -7,15 +9,24 @@ export async function getServerSideProps(context) {
 
   return { props: { data } };
 }
-function mealPlanner({ data }) {
+function MealPlanner({ data }) {
+  const [show, setShow] = useState(false);
+
   return (
     <>
       <NavBar />
       <h1>Monday</h1>
       <MealPlannerCard data={data} />
-      <button>Add</button>
+      {show && <AddMealModal data={data} />}
+      <button
+        onClick={() => {
+          setShow(!show);
+        }}
+      >
+        Add
+      </button>
     </>
   );
 }
 
-export default mealPlanner;
+export default MealPlanner;
