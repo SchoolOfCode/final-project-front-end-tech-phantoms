@@ -2,15 +2,11 @@ import React from "react";
 import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0";
 
-// pass recipe id as an object for our database
-// write a patch request to our api
-
 function SaveRecipeButton({ recipeID }) {
   const { user } = useUser();
 
   async function postSavedRecipe() {
     const email = user.email;
-    // const email = "test2@test2.com";
     const uri =
       `https://dev-backend-phantom-kitchen.herokuapp.com/users/` +
       email +
@@ -18,14 +14,13 @@ function SaveRecipeButton({ recipeID }) {
       recipeID;
     const message = await fetch(uri, {
       method: "POST",
-      mode: "no-cors",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
     });
-    // const content = await message.json();
-    // console.log(content);
+    const content = await message.json();
+    console.log(content);
   }
 
   async function handleClick() {
