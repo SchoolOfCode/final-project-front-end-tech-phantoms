@@ -1,6 +1,6 @@
 import NavBar from "../Components/NavBar";
 import MealPlannerCard from "../Components/MealPlannerCard";
-import AddMealModal from "../pages/AddMealModal";
+import AddMealModal from "../Components/AddMealModal";
 import { useState } from "react";
 
 export async function getServerSideProps(context) {
