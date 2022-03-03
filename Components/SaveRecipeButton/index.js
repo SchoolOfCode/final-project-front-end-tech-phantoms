@@ -18,18 +18,18 @@ function SaveRecipeButton({ recipeID }) {
       recipeID;
     const message = await fetch(uri, {
       method: "POST",
+      mode: "no-cors",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
     });
-    const content = await message.json();
-    console.log(content);
+    // const content = await message.json();
+    // console.log(content);
   }
 
   async function handleClick() {
     await postSavedRecipe();
-    console.log(`clicked, id is: ${recipeID}`); //DEBUG LOG REFACTOR AFTER
   }
 
   if (user) {
