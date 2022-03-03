@@ -1,25 +1,19 @@
 import NavBar from "../Components/NavBar";
 import MealPlannerCard from "../Components/MealPlannerCard";
 
+export async function getServerSideProps(context) {
+  const res = await fetch("http://localhost:3001/savedRecipes");
+  const data = await res.json();
 
-function mealPlanner() {
+  return { props: { data } };
+}
+function mealPlanner({ data }) {
   return (
     <>
       <NavBar />
       <h1>Monday</h1>
-     <MealPlannerCard/>
-      <h1>Tuesday</h1>
-     <MealPlannerCard/>
-      <h1>Wednesday</h1>
-     <MealPlannerCard/>
-      <h1>Thursday</h1>
-     <MealPlannerCard/>
-      <h1>Friday</h1>
-     <MealPlannerCard/>
-      <h1>Saturday</h1>
-     <MealPlannerCard/>
-      <h1>Sunday</h1>
-     <MealPlannerCard/>
+      <MealPlannerCard data={data} />
+      <button>Add</button>
     </>
   );
 }
