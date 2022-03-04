@@ -9,8 +9,8 @@ const RecipeDetails = ({ data, recipeID }) => {
       <Image
         alt="Recipe banner"
         src={data.image}
-        width="100%"
-        height="100%"
+        width="100"
+        height="100"
         layout="responsive"
         objectFit="contain"
       ></Image>
@@ -57,7 +57,7 @@ const RecipeDetails = ({ data, recipeID }) => {
       </Link>
       <p>on {data.source}</p>
       <hr />
-      <SaveRecipeButton disabled={true} recipeID={recipeID}/>
+      <SaveRecipeButton recipeID={recipeID}/>
     </div>
   );
 };
