@@ -28,6 +28,9 @@ export async function getServerSideProps(context) {
   const res = await fetch(fetchURL);
   const data = await res.json();
 
+  console.log(data);
+  //debug clean up after
+
   //feed our component props at pre-render time
   return {
     props: { data: data.hits },
