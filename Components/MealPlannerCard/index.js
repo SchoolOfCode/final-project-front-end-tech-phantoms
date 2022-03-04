@@ -1,16 +1,51 @@
 import {
-  monday,
-  tuesday,
-  wednesday,
-  thursday,
-  friday,
-  saturday,
-  sunday,
+  monday as m,
+  tuesday as t,
+  wednesday as w,
+  thursday as th,
+  friday as f,
+  saturday as s,
+  sunday as su,
 } from "../../days";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
-function recipePlannerCard() {
+function RecipePlannerCard() {
+  const [monday, setMonday] = useState(m);
+  const [tuesday, setTuesday] = useState(t);
+  const [wednesday, setWednesday] = useState(w);
+  const [thursday, setThursday] = useState(th);
+  const [friday, setFriday] = useState(f);
+  const [saturday, setSaturday] = useState(s);
+  const [sunday, setSunday] = useState(su);
+
+  function handleDelete(itemToDelete, day) {
+    const newData = day.filter((item) => {
+      return item.linkToInstructions !== itemToDelete;
+    });
+    if ((day = "monday")) {
+      setMonday(newData);
+    } 
+     if ((day = "tuesday")) {
+      setTuesday(newData);
+    } 
+     if ((day = "wednesday")) {
+      setWednesday(newData);
+    } 
+     if ((day = "thursday")) {
+      setThursday(newData);
+    } 
+     if ((day = "friday")) {
+      setFriday(newData);
+    } 
+     if ((day = "saturday")) {
+      setSaturday(newData);
+    } 
+     if ((day = "sunday")) {
+      setSunday(newData);
+    }
+  }
   return (
     <>
       <h1>monday</h1>
@@ -27,6 +62,11 @@ function recipePlannerCard() {
             <Link href={recipe.linkToInstructions} passHref>
               <button>method</button>
             </Link>
+            <button
+              onClick={() => {
+                handleDelete(recipe.linkToInstructions, monday);
+              }}
+            >Delete</button>
           </div>
         );
       })}
@@ -44,6 +84,11 @@ function recipePlannerCard() {
             <Link href={recipe.linkToInstructions} passHref>
               <button>method</button>
             </Link>
+            <button
+              onClick={() => {
+                handleDelete(recipe.linkToInstructions, tuesday);
+              }}
+            >Delete</button>
           </div>
         );
       })}
@@ -61,6 +106,11 @@ function recipePlannerCard() {
             <Link href={recipe.linkToInstructions} passHref>
               <button>method</button>
             </Link>
+            <button
+              onClick={() => {
+                handleDelete(recipe.linkToInstructions, wednesday);
+              }}
+            >Delete</button>
           </div>
         );
       })}
@@ -78,6 +128,11 @@ function recipePlannerCard() {
             <Link href={recipe.linkToInstructions} passHref>
               <button>method</button>
             </Link>
+            <button
+              onClick={() => {
+                handleDelete(recipe.linkToInstructions, thursday);
+              }}
+            >Delete</button>
           </div>
         );
       })}
@@ -95,6 +150,11 @@ function recipePlannerCard() {
             <Link href={recipe.linkToInstructions} passHref>
               <button>method</button>
             </Link>
+            <button
+              onClick={() => {
+                handleDelete(recipe.linkToInstructions, friday);
+              }}
+            >Delete</button>
           </div>
         );
       })}
@@ -112,6 +172,11 @@ function recipePlannerCard() {
             <Link href={recipe.linkToInstructions} passHref>
               <button>method</button>
             </Link>
+            <button
+              onClick={() => {
+                handleDelete(recipe.linkToInstructions, saturday);
+              }}
+            >Delete</button>
           </div>
         );
       })}
@@ -129,6 +194,11 @@ function recipePlannerCard() {
             <Link href={recipe.linkToInstructions} passHref>
               <button>method</button>
             </Link>
+            <button
+              onClick={() => {
+                handleDelete(recipe.linkToInstructions, sunday);
+              }}
+            >Delete</button>
           </div>
         );
       })}
@@ -136,4 +206,4 @@ function recipePlannerCard() {
   );
 }
 
-export default recipePlannerCard;
+export default RecipePlannerCard;
