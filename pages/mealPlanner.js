@@ -4,20 +4,25 @@ import AddMealModal from "../Components/AddMealModal";
 import { useState } from "react";
 
 export async function getServerSideProps(context) {
-  const res = await fetch("http://localhost:3001/savedRecipes");
-  const data = await res.json();
+  const savedRecipesRes = await //daysRes]
+    fetch("http://localhost:3001/savedRecipes")
+    // fetch("http://localhost:3002/days"),
+  ;
 
-  return { props: { data } };
+  const savedRecipes = await savedRecipesRes.json();
+
+  return { props: { savedRecipes } };
 }
-function MealPlanner({ data }) {
+
+function MealPlanner({ savedRecipes }) {
   const [show, setShow] = useState(false);
 
   return (
     <>
-      <NavBar />
-      <h1>Monday</h1>
-      <MealPlannerCard data={data} />
-      {show && <AddMealModal data={data} />}
+      <NavBar />  
+      
+      <MealPlannerCard />
+      {show && <AddMealModal data={savedRecipes} />}
       <button
         onClick={() => {
           setShow(!show);

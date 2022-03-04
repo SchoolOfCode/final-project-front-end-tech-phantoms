@@ -4,7 +4,7 @@ import RecipeDayCard from "../RecipeDayCard";
 function AddMealModal({ data }) {
   return (
     <div>
-      {data.map((id) => {
+      {data.map((id) => { 
         return <RecipeDayCard id={id} key={id} />;
       })}
     </div>
