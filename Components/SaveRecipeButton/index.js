@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0";
+import { Button, Grid } from "@nextui-org/react";
 
 function SaveRecipeButton({ recipeID }) {
   const { user } = useUser();
@@ -28,14 +29,18 @@ function SaveRecipeButton({ recipeID }) {
   }
 
   if (user) {
-    return <button onClick={handleClick}>Save recipe</button>;
+    return (
+      <Button auto onClick={handleClick}>
+        Save recipe
+      </Button>
+    );
   }
 
   return (
     <>
       <Link href="/api/auth/[...auth0]" as="/api/auth/login">
         <a>
-          <button>Login to save</button>
+          <Button auto>Login to save</Button>
         </a>
       </Link>
     </>
