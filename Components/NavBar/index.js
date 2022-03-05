@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useUser } from "@auth0/nextjs-auth0";
-import { Button, Grid } from "@nextui-org/react";
+import { Button, Grid, Text, Spacer } from "@nextui-org/react";
 
 function NavBar() {
   const { user, isLoading, error } = useUser();
@@ -11,19 +11,23 @@ function NavBar() {
 
   if (user) {
     return (
-      <Grid.Container gap={4} justify="center">
+      <Grid.Container
+        gap={1}
+        display="flex"
+        direction="row"
+        alignItems="center"
+        alignContent="space-between"
+      >
         <Grid xs={3}>
           <Image
             height={50}
             width={50}
             alt={"Phantom logo"}
-            src={
-              "https://cdn.icon-icons.com/icons2/1897/PNG/512/ghost_120956.png"
-            }
+            src="/little_ghost.svg"
           />
         </Grid>
         <Grid m={3}>
-          <div>Phantom Kitchen</div>{" "}
+          <div>Phantom Kitchen</div>
         </Grid>
 
         <Grid xs={3}>
@@ -36,29 +40,49 @@ function NavBar() {
   }
 
   return (
-    <Grid.Container gap={1} justify="center">
-      <Grid m={3}>
-        <Image
-          height={50}
-          width={50}
-          alt={"Phantom logo"}
-          src={
-            "https://cdn.icon-icons.com/icons2/1897/PNG/512/ghost_120956.png"
-          }
-        />
+    <Grid.Container
+      gap={1}
+      display="flex"
+      direction="row"
+      alignItems="center"
+      alignContent="space-between"
+      justify="space-between"
+    >
+      <Grid sm={1}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          <Link href="/" passHref>
+            <Image
+              height={36}
+              width={36}
+              alt={"Phantom logo"}
+              src={"/little_ghost.svg"}
+            />
+          </Link>
+          <Link href="/" passHref>
+            <Text size="1em" weight="bold" style={{ paddingLeft: "5px" }}>
+              Phantom Kitchen
+            </Text>
+          </Link>
+        </div>
       </Grid>
-      <Grid m={3}>
-        <div>Phantom Kitchen</div>
-      </Grid>
-      <Grid xs={3}>
-        <Link href="/api/auth/[...auth0]" as="/api/auth/login" passHref>
-          <Button auto>Sign up</Button>
-        </Link>
-      </Grid>
-      <Grid xs={3}>
-        <Link href="/api/auth/[...auth0]" as="/api/auth/login" passHref>
-          <Button auto>LOGIN</Button>
-        </Link>
+
+      <Spacer x={2} />
+
+      <Grid sm={2}>
+        <Button.Group size="xs">
+          <Link href="/api/auth/[...auth0]" as="/api/auth/login" passHref>
+            <Button auto>Sign up</Button>
+          </Link>
+          <Link href="/api/auth/[...auth0]" as="/api/auth/login" passHref>
+            <Button auto>Log in</Button>
+          </Link>
+        </Button.Group>
       </Grid>
     </Grid.Container>
   );
