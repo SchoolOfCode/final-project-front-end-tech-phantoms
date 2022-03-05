@@ -17,22 +17,42 @@ function NavBar() {
         direction="row"
         alignItems="center"
         alignContent="space-between"
+        justify="space-between"
       >
-        <Grid xs={3}>
-          <Image
-            height={50}
-            width={50}
-            alt={"Phantom logo"}
-            src="/little_ghost.svg"
-          />
-        </Grid>
-        <Grid m={3}>
-          <div>Phantom Kitchen</div>
+        <Grid sm>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <Link href="/" passHref>
+              <Image
+                height={36}
+                width={36}
+                alt={"Phantom logo"}
+                src={"/little_ghost.svg"}
+              />
+            </Link>
+            <Link href="/" passHref>
+              <Text size="1em" weight="bold" style={{ paddingLeft: "5px" }}>
+                Phantom Kitchen
+              </Text>
+            </Link>
+          </div>
         </Grid>
 
-        <Grid xs={3}>
+        <Spacer x={1} />
+
+        <Grid sm>
           <Link href="/profile" passHref>
-            <Image height={50} width={50} src={user.picture} alt="User Image" />
+            <Image
+              height={36}
+              width={36}
+              src="/profile_icon.svg"
+              alt="profile logo"
+            />
           </Link>
         </Grid>
       </Grid.Container>
@@ -45,10 +65,9 @@ function NavBar() {
       display="flex"
       direction="row"
       alignItems="center"
-      alignContent="space-between"
       justify="space-between"
     >
-      <Grid sm={1}>
+      <Grid xs>
         <div
           style={{
             display: "flex",
@@ -65,24 +84,35 @@ function NavBar() {
             />
           </Link>
           <Link href="/" passHref>
-            <Text size="1em" weight="bold" style={{ paddingLeft: "5px" }}>
+            <Text size="1em" weight="semibold" style={{ paddingLeft: "5px" }}>
               Phantom Kitchen
             </Text>
           </Link>
         </div>
       </Grid>
 
-      <Spacer x={2} />
+      <Spacer x={1} />
 
-      <Grid sm={2}>
-        <Button.Group size="xs">
+      <Grid sm>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            paddingRight: "2px",
+          }}
+        >
           <Link href="/api/auth/[...auth0]" as="/api/auth/login" passHref>
-            <Button auto>Sign up</Button>
+            <Button light size="sm" auto>
+              Sign up
+            </Button>
           </Link>
           <Link href="/api/auth/[...auth0]" as="/api/auth/login" passHref>
-            <Button auto>Log in</Button>
+            <Button size="sm" rounded auto>
+              Log in
+            </Button>
           </Link>
-        </Button.Group>
+        </div>
       </Grid>
     </Grid.Container>
   );
