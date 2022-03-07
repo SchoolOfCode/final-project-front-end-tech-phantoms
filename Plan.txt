@@ -32,10 +32,13 @@ array = [
 //     Button that will delete it, post to json-server
 
 ShoppingList page
-shoppingListData.js for development
-    Import shopping list data from shoppingListData.js
-    Display imported data
-    Checkbox that will strikethrough the item text, update shoppingListData.js to strikethrough
-    Button that will delete item it's rendered on, remove item from array
+Create this component according to Figma designs
+Fetch shopping list from API for this user
+Display shopping list
+Checkbox that will strikethrough the item text
+    update shoppingListData.js to strikethrough
+        don;t necessarily need a route for this
+Button that will delete item it's rendered on, remove item from array
+    will have a route by the time we get to this button
 
-    Clear shopping list button
+Clear shopping list button
