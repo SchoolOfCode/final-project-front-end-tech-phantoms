@@ -1,139 +1,52 @@
-import {
-  monday,
-  tuesday,
-  wednesday,
-  thursday,
-  friday,
-  saturday,
-  sunday,
-} from "../../days";
-import Image from "next/image";
-import Link from "next/link";
+import { useState } from "react";
+import MondayCard from "../Days/Monday";
+import TuesdayCard from "../Days/Tuesday";
+import WednesdayCard from "../Days/Wednesday";
+import ThursdayCard from "../Days/Thursday";
+import FridayCard from "../Days/Friday";
+import SaturdayCard from "../Days/Saturday";
+import SundayCard from "../Days/Sunday";
 
-function recipePlannerCard() {
+function MealPlannerCard({
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday,
+  Sunday,
+  email,
+}) {
+  const [show, setShow] = useState(false);
   return (
     <>
-      <h1>monday</h1>
-      {monday.map((recipe) => {
-        return (
-          <div key={recipe.linkToInstructions}>
-            <Image
-              src={recipe.recipeImage}
-              alt={recipe.recipeName}
-              height={100}
-              width={100}
-            />
-            <h3 key={recipe}>{recipe.recipeName}</h3>
-            <Link href={recipe.linkToInstructions} passHref>
-              <button>method</button>
-            </Link>
-          </div>
-        );
-      })}
-      <h1>tuesday</h1>
-      {tuesday.map((recipe) => {
-        return (
-          <div key={recipe.linkToInstructions}>
-            <Image
-              src={recipe.recipeImage}
-              alt={recipe.recipeName}
-              height={100}
-              width={100}
-            />
-            <h3 key={recipe}>{recipe.recipeName}</h3>
-            <Link href={recipe.linkToInstructions} passHref>
-              <button>method</button>
-            </Link>
-          </div>
-        );
-      })}
-      <h1>wednesday</h1>
-      {wednesday.map((recipe) => {
-        return (
-          <div key={recipe.linkToInstructions}>
-            <Image
-              src={recipe.recipeImage}
-              alt={recipe.recipeName}
-              height={100}
-              width={100}
-            />
-            <h3 key={recipe}>{recipe.recipeName}</h3>
-            <Link href={recipe.linkToInstructions} passHref>
-              <button>method</button>
-            </Link>
-          </div>
-        );
-      })}
-      <h1>thursday</h1>
-      {thursday.map((recipe) => {
-        return (
-          <div key={recipe.linkToInstructions}>
-            <Image
-              src={recipe.recipeImage}
-              alt={recipe.recipeName}
-              height={100}
-              width={100}
-            />
-            <h3 key={recipe}>{recipe.recipeName}</h3>
-            <Link href={recipe.linkToInstructions} passHref>
-              <button>method</button>
-            </Link>
-          </div>
-        );
-      })}
-      <h1>friday</h1>
-      {friday.map((recipe) => {
-        return (
-          <div key={recipe.linkToInstructions}>
-            <Image
-              src={recipe.recipeImage}
-              alt={recipe.recipeName}
-              height={100}
-              width={100}
-            />
-            <h3 key={recipe}>{recipe.recipeName}</h3>
-            <Link href={recipe.linkToInstructions} passHref>
-              <button>method</button>
-            </Link>
-          </div>
-        );
-      })}
-      <h1>saturday</h1>
-      {saturday.map((recipe) => {
-        return (
-          <div key={recipe.linkToInstructions}>
-            <Image
-              src={recipe.recipeImage}
-              alt={recipe.recipeName}
-              height={100}
-              width={100}
-            />
-            <h3 key={recipe}>{recipe.recipeName}</h3>
-            <Link href={recipe.linkToInstructions} passHref>
-              <button>method</button>
-            </Link>
-          </div>
-        );
-      })}
-      <h1>sunday</h1>
-      {sunday.map((recipe) => {
-        return (
-          <div key={recipe.linkToInstructions}>
-            <Image
-              src={recipe.recipeImage}
-              alt={recipe.recipeName}
-              height={100}
-              width={100}
-            />
-            <h3 key={recipe}>{recipe.recipeName}</h3>
-            <Link href={recipe.linkToInstructions} passHref>
-              <button>method</button>
-            </Link>
-          </div>
-        );
-      })}
+      {!show && (
+        <button
+          onClick={() => {
+            setShow(true);
+          }}
+        >
+          Edit
+        </button>
+      )}
+      {show && (
+        <button
+          onClick={() => {
+            setShow(false);
+          }}
+        >
+          Save Changes
+        </button>
+      )}
+      <MondayCard Monday={Monday} email={email} show={show} />
+      <TuesdayCard Tuesday={Tuesday} email={email} show={show} />
+      <WednesdayCard Wednesday={Wednesday} email={email} show={show} />
+      <ThursdayCard Thursday={Thursday} email={email} show={show} />
+      <FridayCard Friday={Friday} email={email} show={show} />
+      <SaturdayCard Saturday={Saturday} email={email} show={show} />
+      <SundayCard Sunday={Sunday} email={email} show={show} />
     </>
   );
 }
 
-export default recipePlannerCard;
+export default MealPlannerCard;
