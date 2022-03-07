@@ -18,17 +18,15 @@ function AddToMealPlannerBtn({ day, setData, image, label, url }) {
         linkToInstructions: url,
       }),
     });
+    getUpdatedData();
   };
   async function getUpdatedData() {
     const res = await fetch(`http://localhost:3002/${day}`);
     const data = await res.json();
     setData(data);
   }
-  function callBoth() {
-    handlePost();
-    getUpdatedData();
-  }
-  return <button onClick={callBoth}>Add</button>;
+
+  return <button onClick={handlePost}>Add</button>;
 }
 
 export default AddToMealPlannerBtn;

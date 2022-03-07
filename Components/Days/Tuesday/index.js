@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { AddMealModal } from "../../AddMealModal";
 import { useState } from "react";
+import { AddMealModal } from "../../AddMealModal";
+import css from "../styles.module.css";
 
-function TuesdayCard({ Tuesday, email }) {
+function TuesdayCard({ Tuesday, email, show }) {
   const [data, setData] = useState(Tuesday);
 
   const handleDelete = async (id, day) => {
@@ -16,40 +17,48 @@ function TuesdayCard({ Tuesday, email }) {
       body: null,
     });
 
-    const datas = await response.json();
-    const x = data.filter((i) => {
+    const newData = data.filter((i) => {
       return i.id !== id;
     });
-    setData(x);
+    setData(newData);
   };
 
+  function updateData(daata) {
+    setData(daata);
+  }
   return (
     <div>
       <h2>Tuesday</h2>
-      {data.map((recipe) => {
-        return (
-          <div key={recipe.id}>
-            <Image
-              height={150}
-              width={150}
-              alt="Recipe Image"
-              src={recipe.recipeImage}
-            ></Image>
-            <h3>{recipe.recipeName}</h3>
-            <Link href={recipe.linkToInstructions} passHref>
-              <button>Method</button>
-            </Link>
-            <button
-              onClick={() => {
-                handleDelete(recipe.id, "Tuesday");
-              }}
-            >
-              Delete
-            </button>
-          </div>
-        );
-      })}
-      <AddMealModal email={email} />
+      <div className={css.container}>
+        {data.map((recipe) => {
+          return (
+            <div key={recipe.id}>
+              <Image
+                height={150}
+                width={150}
+                alt="Recipe Image"
+                src={recipe.recipeImage}
+              ></Image>
+              <h3>{recipe.recipeName}</h3>
+              <Link href={recipe.linkToInstructions} passHref>
+                <button>Method</button>
+              </Link>
+              {show && (
+                <button
+                  onClick={() => {
+                    handleDelete(recipe.id, "Tuesday");
+                  }}
+                >
+                  Delete
+                </button>
+              )}
+            </div>
+          );
+        })}
+        {show && (
+          <AddMealModal email={email} setData={updateData} day={"Tuesday"} />
+        )}{" "}
+      </div>
     </div>
   );
 }
