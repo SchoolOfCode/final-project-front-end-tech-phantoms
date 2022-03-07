@@ -6,9 +6,11 @@ function SavedRecipesLayout({ savedRecipesData }) {
   return (
     <div>
       {savedRecipesData.map((item, index) => {
-        <>
-          return <SavedRecipeCard recipeID={item} key={index} />
-        </>;
+        return (
+          <>
+            <SavedRecipeCard recipeID={item} key={index} />
+          </>
+        );
       })}
     </div>
   );
