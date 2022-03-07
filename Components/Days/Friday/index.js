@@ -2,8 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { AddMealModal } from "../../AddMealModal";
+import css from "../styles.module.css";
 
-function FridayCard({ Friday, email }) {
+function FridayCard({ Friday, email, show }) {
   const [data, setData] = useState(Friday);
 
   const handleDelete = async (id, day) => {
@@ -28,30 +29,36 @@ function FridayCard({ Friday, email }) {
   return (
     <div>
       <h2>Friday</h2>
-      {data.map((recipe) => {
-        return (
-          <div key={recipe.id}>
-            <Image
-              height={150}
-              width={150}
-              alt="Recipe Image"
-              src={recipe.recipeImage}
-            ></Image>
-            <h3>{recipe.recipeName}</h3>
-            <Link href={recipe.linkToInstructions} passHref>
-              <button>Method</button>
-            </Link>
-            <button
-              onClick={() => {
-                handleDelete(recipe.id, "Friday");
-              }}
-            >
-              Delete
-            </button>
-          </div>
-        );
-      })}
-      <AddMealModal email={email} setData={updateData} day={"Friday"} />
+      <div className={css.container}>
+        {data.map((recipe) => {
+          return (
+            <div key={recipe.id}>
+              <Image
+                height={150}
+                width={150}
+                alt="Recipe Image"
+                src={recipe.recipeImage}
+              ></Image>
+              <h3>{recipe.recipeName}</h3>
+              <Link href={recipe.linkToInstructions} passHref>
+                <button>Method</button>
+              </Link>
+              {show && (
+                <button
+                  onClick={() => {
+                    handleDelete(recipe.id, "Friday");
+                  }}
+                >
+                  Delete
+                </button>
+              )}
+            </div>
+          );
+        })}
+        {show && (
+          <AddMealModal email={email} setData={updateData} day={"Friday"} />
+        )}
+      </div>
     </div>
   );
 }

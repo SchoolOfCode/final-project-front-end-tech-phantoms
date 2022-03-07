@@ -17,15 +17,34 @@ function MealPlannerCard({
   Sunday,
   email,
 }) {
+  const [show, setShow] = useState(false);
   return (
     <>
-      <MondayCard Monday={Monday} email={email} />
-      <TuesdayCard Tuesday={Tuesday} email={email} />
-      <WednesdayCard Wednesday={Wednesday} email={email} />
-      <ThursdayCard Thursday={Thursday} email={email} />
-      <FridayCard Friday={Friday} email={email} />
-      <SaturdayCard Saturday={Saturday} email={email} />
-      <SundayCard Sunday={Sunday} email={email} />
+      {!show && (
+        <button
+          onClick={() => {
+            setShow(true);
+          }}
+        >
+          Edit
+        </button>
+      )}
+      {show && (
+        <button
+          onClick={() => {
+            setShow(false);
+          }}
+        >
+          Save Changes
+        </button>
+      )}
+      <MondayCard Monday={Monday} email={email} show={show} />
+      <TuesdayCard Tuesday={Tuesday} email={email} show={show} />
+      <WednesdayCard Wednesday={Wednesday} email={email} show={show} />
+      <ThursdayCard Thursday={Thursday} email={email} show={show} />
+      <FridayCard Friday={Friday} email={email} show={show} />
+      <SaturdayCard Saturday={Saturday} email={email} show={show} />
+      <SundayCard Sunday={Sunday} email={email} show={show} />
     </>
   );
 }

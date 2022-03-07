@@ -85,7 +85,6 @@ function MealPlanner({
         Sunday={Sunday}
         email={email}
       />
-      <AddMealModal email={email} />
     </>
   );
 }
