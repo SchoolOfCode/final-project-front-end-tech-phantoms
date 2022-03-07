@@ -1,13 +1,26 @@
 import React from "react";
 import NavBar from "../Components/NavBar";
+import ShoppingItem from "../Components/ShoppingItem";
+import { useUser } from "@auth0/nextjs-auth0";
 
-function shoppingList() {
+function ShoppingList() {
+  const { user } = useUser();
   return (
     <div>
-      <h2>Shopping List</h2>
       <NavBar />
+      <h2>Shopping List</h2>
+      <div>
+        {/* {shoppingListData.map((item, index) => {
+          return (
+            <>
+              <ShoppingItem key={index} data={item.shoppingList} />
+            </>
+          );
+        }
+        )} */}
+      </div>
     </div>
   );
 }
 
-export default shoppingList;
+export default ShoppingList;
