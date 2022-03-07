@@ -1,6 +1,5 @@
 import React from "react";
 import NavBar from "../Components/NavBar";
-import { shoppingListData } from "../shoppingListDb";
 
 function shoppingList() {
   return (
