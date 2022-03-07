@@ -23,6 +23,9 @@ export default function Home() {
         <Link href="/mealPlanner" passHref>
           <button>Meal Planner</button>
         </Link>
+        <Link href="/shoppingList" passHref>
+          <button>Shopping List</button>
+        </Link>
       </main>
     </div>
   );

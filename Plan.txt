@@ -37,3 +37,5 @@ shoppingListData.js for development
     Display imported data
     Checkbox that will strikethrough the item text, update shoppingListData.js to strikethrough
     Button that will delete item it's rendered on, remove item from array
+
+    Clear shopping list button
