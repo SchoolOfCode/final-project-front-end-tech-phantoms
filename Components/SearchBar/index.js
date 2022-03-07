@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Input, Button, Grid } from "@nextui-org/react";
 
 function SearchBar({ handleFetch }) {
   const [input, setInput] = useState("");
@@ -13,26 +14,30 @@ function SearchBar({ handleFetch }) {
   //Link to search results page with [query]
 
   return (
-    <>
-      <input
-        type="text"
-        placeholder="What are you looking for?"
-        value={input}
-        onChange={handleChange}
-      />
-      <Link href={"/search/" + input} passHref>
-        <button>
-          <Image
-            height={50}
-            width={50}
-            alt={"Search Recipes"}
-            src={
-              "https://cdn.icon-icons.com/icons2/1339/PNG/512/rightarrow_87483.png"
-            }
-          />
-        </button>
-      </Link>
-    </>
+    <Grid.Container gap={2} justify="center">
+      <Grid xs={6}>
+        <Input
+          type="text"
+          placeholder="What are you looking for?"
+          value={input}
+          onChange={handleChange}
+        />
+      </Grid>
+      <Grid xs={3}>
+        <Link href={"/search/" + input} passHref>
+          <Button auto>
+            <Image
+              height={50}
+              width={50}
+              alt={"Search Recipes"}
+              src={
+                "https://cdn.icon-icons.com/icons2/1339/PNG/512/rightarrow_87483.png"
+              }
+            />
+          </Button>
+        </Link>
+      </Grid>
+    </Grid.Container>
   );
 }
 
