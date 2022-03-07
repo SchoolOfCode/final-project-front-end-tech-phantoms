@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { AddMealModal } from "../../AddMealModal";
 import css from "../styles.module.css";
-import { Container, Row, Col } from "@nextui-org/react";
+import { Grid, Text, Button, Divider, Container, Row, Card } from "@nextui-org/react";
 
 function MondayCard({ Monday, email, show }) {
   const [data, setData] = useState(Monday);
@@ -33,32 +33,43 @@ function MondayCard({ Monday, email, show }) {
       <div className={css.container}>
         {data.map((recipe) => {
           return (
-            <Container key={recipe.id} className={css.pic}>
-              <Row justify="center" align="center">
+            <Container key={recipe.id} className={css.pic} gap={2}>
+            <Grid sm={12} md={5}>
+            <Card css={{ mw: "330px", background:'$ourGrey' }} hoverable>
+            <Card.Header>
                 <Image
                   height={150}
                   width={150}
                   alt="Recipe Image"
                   src={recipe.recipeImage}
                 ></Image>
-              </Row>
-              <Row justify="center" align="center">
-                <h3>{recipe.recipeName}</h3>
-              </Row>
-              <Row justify="center" align="center">
-                <Link href={recipe.linkToInstructions} passHref>
-                  <button>Method</button>
-                </Link>
-              </Row>
-              {show && (
-                <button
+              </Card.Header>
+              <Card.Body css={{ py: '$10' }}>
+          <Text h3>
+          {recipe.recipeName}  
+          </Text>
+        </Card.Body>
+        <Divider/>
+        <Card.Footer>
+        <Row justify="space-evenly">
+        {show && (
+                <Button size="sm" color="error"
                   onClick={() => {
                     handleDelete(recipe.id, "Monday");
                   }}
                 >
                   Delete
-                </button>
+                </Button>
               )}
+            <Link href={recipe.linkToInstructions} passHref>
+                  <Button size="sm">Method</Button>
+                </Link>
+          </Row>
+        </Card.Footer>
+      
+          
+              </Card>
+            </Grid>
             </Container>
           );
         })}
