@@ -51,7 +51,7 @@ function FridayCard({ Friday, email }) {
           </div>
         );
       })}
-      <AddMealModal email={email} setData={updateData} />
+      <AddMealModal email={email} setData={updateData} day={"Friday"} />
     </div>
   );
 }

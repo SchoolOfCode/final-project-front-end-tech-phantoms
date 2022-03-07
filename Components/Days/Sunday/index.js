@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { AddMealModal } from "../../AddMealModal";
 import { useState } from "react";
+import { AddMealModal } from "../../AddMealModal";
 
 function SundayCard({ Sunday, email }) {
   const [data, setData] = useState(Sunday);
@@ -16,13 +16,15 @@ function SundayCard({ Sunday, email }) {
       body: null,
     });
 
-    const datas = await response.json();
-    const x = data.filter((i) => {
+    const newData = data.filter((i) => {
       return i.id !== id;
     });
-    setData(x);
+    setData(newData);
   };
 
+  function updateData(daata) {
+    setData(daata);
+  }
   return (
     <div>
       <h2>Sunday</h2>
@@ -49,7 +51,7 @@ function SundayCard({ Sunday, email }) {
           </div>
         );
       })}
-      <AddMealModal email={email} />
+      <AddMealModal email={email} setData={updateData} day={"Sunday"} />
     </div>
   );
 }
