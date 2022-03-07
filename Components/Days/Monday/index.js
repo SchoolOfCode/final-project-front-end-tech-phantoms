@@ -32,7 +32,7 @@ function MondayCard({ Monday, email, show }) {
       <div className={css.container}>
         {data.map((recipe) => {
           return (
-            <div key={recipe.id}>
+            <div key={recipe.id} className={css.pic}>
               <Image
                 height={150}
                 width={150}
