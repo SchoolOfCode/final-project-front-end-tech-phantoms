@@ -31,6 +31,15 @@ export default function Home() {
             <button>Meal Planner</button>
           </Link>
         )}
+        {user ? (
+          <Link href={"/saved_recipes/" + user.email} passHref>
+            <button>Saved Recipes</button>
+          </Link>
+        ) : (
+          <Link href="/api/auth/[...auth0]" as="/api/auth/login" passHref>
+            <button>Saved Recipes</button>
+          </Link>
+        )}
       </main>
     </div>
   );

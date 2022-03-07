@@ -5,6 +5,7 @@
   "scripts": {
     "build": "next build",
     "start": "next start",
+    "dev": "next dev",
     "lint": "next lint",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
