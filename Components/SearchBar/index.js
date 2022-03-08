@@ -25,7 +25,7 @@ function SearchBar({ handleFetch }) {
       </Grid>
       <Grid xs={3}>
         <Link href={"/search/" + input} passHref>
-          <Button auto>
+          <><Button auto>
             <Image
               height={50}
               width={50}
@@ -34,7 +34,7 @@ function SearchBar({ handleFetch }) {
                 "https://cdn.icon-icons.com/icons2/1339/PNG/512/rightarrow_87483.png"
               }
             />
-          </Button>
+          </Button></>
         </Link>
       </Grid>
     </Grid.Container>
