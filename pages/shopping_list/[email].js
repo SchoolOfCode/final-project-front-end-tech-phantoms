@@ -1,11 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import NavBar from "../../Components/NavBar";
 import ShoppingItem from "../../Components/ShoppingItem";
-import { useUser } from "@auth0/nextjs-auth0";
 
 function ShoppingList({ data }) {
-  
-
+  const [listData, setListData]=useState({data})
+  console.log(listData)
   function deleteItem() {
     console.log("deleteItem was called")
   }
