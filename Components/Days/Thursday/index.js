@@ -37,9 +37,6 @@ function ThursdayCard({ Thursday, email, show }) {
   }
   return (
     <div>
-      <div className={css.header}>
-        <h2>Thursday</h2>
-      </div>
       <Grid.Container gap={2} justify="flex-start">
         {data.map((recipe) => {
           return (

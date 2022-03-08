@@ -43,6 +43,12 @@
       "recipeName": "Vegan Broccoli Soup Recipe",
       "recipeImage": "https://www.edamam.com/web-img/8c8/8c8506a5b2f074b7a5aa148710eb85a8.jpg",
       "linkToInstructions": "http://www.foodrepublic.com/2012/03/28/classic-american-fare-now-vegan"
+    },
+    {
+      "id": 610598480734,
+      "recipeName": "The Crispy Egg",
+      "recipeImage": "https://www.edamam.com/web-img/16c/16c9f7a2bcf8a7643ada8729cd693c9d.jpg",
+      "linkToInstructions": "http://smittenkitchen.com/blog/2014/10/the-crispy-egg/"
     }
   ],
   "Wednesday": [
