@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import css from "./styles.module.css";
 
 function AddToMealPlannerBtn({ day, setData, image, label, url }) {
   const fetchURL = `http://localhost:3002/${day}`;
@@ -26,7 +27,11 @@ function AddToMealPlannerBtn({ day, setData, image, label, url }) {
     setData(data);
   }
 
-  return <button onClick={handlePost}>Add</button>;
+  return (
+    <button onClick={handlePost} className={css.btn}>
+      Add To Meal Planner
+    </button>
+  );
 }
 
 export default AddToMealPlannerBtn;

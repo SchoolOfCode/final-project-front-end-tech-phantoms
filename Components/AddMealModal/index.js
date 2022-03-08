@@ -43,6 +43,7 @@ export function AddMealModal({ email, setData, day }) {
               return (
                 <>
                   <RecipeDayCard id={id} key={id} setData={setData} day={day} />
+                  <br />
                 </>
               );
             })}

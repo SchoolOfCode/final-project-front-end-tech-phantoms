@@ -35,15 +35,27 @@ function MealPlannerCard({
           </Button>
         )}
         {show && (
-          <Button
-            size="sm"
-            css={{ background: "$ourGrey" }}
-            onClick={() => {
-              setShow(false);
-            }}
-          >
-            Save Changes
-          </Button>
+          <>
+            <Button
+              size="sm"
+              css={{ background: "$ourGrey" }}
+              onClick={() => {
+                setShow(false);
+              }}
+            >
+              Save Changes
+            </Button>
+
+            <Button
+              size="sm"
+              css={{ background: "$ourGrey" }}
+              onClick={() => {
+                setShow(false);
+              }}
+            >
+              Cancel
+            </Button>
+          </>
         )}
       </div>
       <Collapse.Group bordered>
