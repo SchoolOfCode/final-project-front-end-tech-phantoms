@@ -6,6 +6,7 @@ import ThursdayCard from "../Days/Thursday";
 import FridayCard from "../Days/Friday";
 import SaturdayCard from "../Days/Saturday";
 import SundayCard from "../Days/Sunday";
+import css from "./styles.module.css";
 
 function MealPlannerCard({
   Monday,
@@ -20,24 +21,26 @@ function MealPlannerCard({
   const [show, setShow] = useState(false);
   return (
     <>
-      {!show && (
-        <button
-          onClick={() => {
-            setShow(true);
-          }}
-        >
-          Edit
-        </button>
-      )}
-      {show && (
-        <button
-          onClick={() => {
-            setShow(false);
-          }}
-        >
-          Save Changes
-        </button>
-      )}
+      <div className={css.edit}>
+        {!show && (
+          <button
+            onClick={() => {
+              setShow(true);
+            }}
+          >
+            Edit
+          </button>
+        )}
+        {show && (
+          <button
+            onClick={() => {
+              setShow(false);
+            }}
+          >
+            Save Changes
+          </button>
+        )}
+      </div>
       <MondayCard Monday={Monday} email={email} show={show} />
       <TuesdayCard Tuesday={Tuesday} email={email} show={show} />
       <WednesdayCard Wednesday={Wednesday} email={email} show={show} />
