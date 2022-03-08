@@ -10,7 +10,7 @@ const ShoppingItem = ({ data, deleteItem, checkItem }) => {
         {data.quantity} {data.ingredient}
       </Checkbox>
       <Spacer x={0.5} />
-      <Button onClick={deleteItem} size="xs" color="error" ghost auto>
+      <Button onClick={()=>{deleteItem(data.ingredient)}} size="xs" color="error" ghost auto>
         X
       </Button>
     </li>

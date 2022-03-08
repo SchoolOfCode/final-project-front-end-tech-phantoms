@@ -5,23 +5,26 @@ import ShoppingItem from "../../Components/ShoppingItem";
 function ShoppingList({ data }) {
   const [listData, setListData] = useState(data);
 
-  // console.log(listData)
-
-  function deleteItem() {
-    
+  function deleteItem(ingredientName) {
+    listData.forEach((listItem, index) => {
+      if (listItem.ingredient === ingredientName) { //find the ingredient in the shopping list
+        setListData([ //update listData state immutably
+          ...listData.slice(0, index), //remove matching item using slice
+          ...listData.slice(index + 1, listData.length),
+        ]);
+      }
+    });
   }
 
   function checkItem(ingredientName) {
     const newList = listData.map((listItem) => {
-      if (listItem.ingredient === ingredientName) {
-        //find the ingredient in the shopping list
+      if (listItem.ingredient === ingredientName) { //find the ingredient in the shopping list
         listItem = { ...listItem, needToBuy: !listItem.needToBuy }; //toggle boolean value
-        return listItem;
+        return listItem; //return changed item
       }
       return listItem; //return unchanged items
     });
     setListData(newList);
-    console.log(newList);
   }
 
   return (
