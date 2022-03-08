@@ -2,7 +2,7 @@ import React from "react";
 import { useUser } from "@auth0/nextjs-auth0";
 import { Button } from "@nextui-org/react";
 
-function UnSaveRecipeButton({ recipeID }) {
+function UnSaveRecipeButton({ recipeID, setShow }) {
   const { user } = useUser();
 
   async function deleteSavedRecipe() {
@@ -20,16 +20,15 @@ function UnSaveRecipeButton({ recipeID }) {
       },
     });
     const content = await message.json();
-    console.log(content);
-    console.log(user);
   }
 
   async function handleClick() {
     await deleteSavedRecipe();
+    setShow(false);
   }
 
   return (
-    <Button auto onClick={handleClick}>
+    <Button color="error" size="xs" onClick={handleClick}>
       Delete recipe
     </Button>
   );
