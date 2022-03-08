@@ -22,6 +22,7 @@ export default function Home() {
         <NavBar />
         <SearchBar></SearchBar>
         <h2 className={styles.title}>Welcome to Phantom Kitchen</h2>
+
         {user ? (
           <Link href="/mealPlanner" passHref>
             <button>Meal Planner</button>
@@ -31,6 +32,9 @@ export default function Home() {
             <button>Meal Planner</button>
           </Link>
         )}
+        <Link href="/shoppingList" passHref>
+          <button>Shopping List</button>
+        </Link>
       </main>
     </div>
   );
