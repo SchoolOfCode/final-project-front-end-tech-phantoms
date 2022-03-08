@@ -1,22 +1,44 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import NavBar from "../../Components/NavBar";
 import ShoppingItem from "../../Components/ShoppingItem";
 
 function ShoppingList({ data }) {
-  const [listData, setListData]=useState({data})
-  console.log(listData)
+  const [listData, setListData] = useState(data);
+
+  // console.log(listData)
+
   function deleteItem() {
-    console.log("deleteItem was called")
+    
+  }
+
+  function checkItem(ingredientName) {
+    const newList = listData.map((listItem) => {
+      if (listItem.ingredient === ingredientName) {
+        //find the ingredient in the shopping list
+        listItem = { ...listItem, needToBuy: !listItem.needToBuy }; //toggle boolean value
+        return listItem;
+      }
+      return listItem; //return unchanged items
+    });
+    setListData(newList);
+    console.log(newList);
   }
 
   return (
     <div>
       <NavBar />
-      <h3 style={{textAlign: "center"}}>Shopping List</h3>
-      <hr/>
-      <div style={{paddingLeft: "4vw"}}>
-        {data.map((item, index) => {
-          return <ShoppingItem onClick={deleteItem} key={index} data={item}/>;
+      <h3 style={{ textAlign: "center" }}>Shopping List</h3>
+      <hr />
+      <div style={{ paddingLeft: "4vw" }}>
+        {listData.map((item, index) => {
+          return (
+            <ShoppingItem
+              checkItem={checkItem}
+              deleteItem={deleteItem}
+              key={index}
+              data={item}
+            />
+          );
         })}
       </div>
     </div>
