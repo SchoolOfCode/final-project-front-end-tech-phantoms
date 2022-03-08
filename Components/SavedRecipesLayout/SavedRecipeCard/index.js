@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@nextui-org/react";
-import UnSaveRecipeButton from "../../UnSaveRecipe";
+import UnSaveRecipeButton from "../../UnSaveRecipeButton";
 
 function SavedRecipeCard({ recipeID }) {
   const [recipeData, setRecipeData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  //line 10 and 14 are creating a delay of 3 seconds between api calls, get the groups feelings about this
   useEffect(() => {
     async function getRecipeData() {
+      await delay(3000);
       setIsLoading(true);
       const fetchURL = `https://api.edamam.com/api/recipes/v2/${recipeID}?type=public&app_id=${process.env.NEXT_PUBLIC_EDAMAM_APP_ID}&app_key=${process.env.NEXT_PUBLIC_EDAMAM_APP_KEY}`;
       const res = await fetch(fetchURL);
