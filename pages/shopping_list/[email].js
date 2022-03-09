@@ -5,7 +5,6 @@ import ShoppingItem from "../../Components/ShoppingItem";
 function ShoppingList({ data, email }) {
   const [listData, setListData] = useState(data);
 
-  
   function deleteItem(ingredientName) {
     listData.forEach((listItem, index) => {
       if (listItem.ingredient === ingredientName) {
@@ -18,17 +17,22 @@ function ShoppingList({ data, email }) {
       }
     });
   }
-  
+
   async function postCheckItem(ingredientName) {
-    console.log(email)
-    const fetchURL = `http://localhost:3002/shopping/${email}/checkOff/${ingredientName}`
-    const res = await fetch(fetchURL);
-    const data = await res.json();
-    console.log(data)
+    const fetchURL = `http://localhost:3002/shopping/${email}/checkOff/${ingredientName}`;
+
+    const res = await fetch(fetchURL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    const updatedShoppingList = await res.json();
   }
 
   async function checkItem(ingredientName) {
-    let itemToCheck
+    let itemToCheck;
     const newList = listData.map((listItem) => {
       if (listItem.ingredient === ingredientName) {
         //find the ingredient in the shopping list
