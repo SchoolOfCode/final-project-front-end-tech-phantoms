@@ -5,17 +5,32 @@ import ShoppingItem from "../../Components/ShoppingItem";
 function ShoppingList({ data, email }) {
   const [listData, setListData] = useState(data);
 
-  function deleteItem(ingredientName) {
-    listData.forEach((listItem, index) => {
-      if (listItem.ingredient === ingredientName) {
-        //find the ingredient in the shopping list
-        setListData([
-          //update listData state immutably
-          ...listData.slice(0, index), //remove matching item using slice
-          ...listData.slice(index + 1, listData.length),
-        ]);
-      }
+  async function postDeleteItem(ingredientName) {
+    const fetchURL = `http://localhost:3002/shopping/${email}/delete/${ingredientName}`;
+
+    const res = await fetch(fetchURL, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
     });
+    const updatedShoppingList = await res.json();
+  }
+
+  async function deleteItem(ingredientName) {
+    let itemToDelete;
+
+    const newList = listData.filter((listItem) => {
+      if (listItem.ingredient === ingredientName) {
+        //if the items match, we want to send delete to API
+        itemToDelete = listItem.ingredient;
+      }
+      return listItem.ingredient !== ingredientName;
+    });
+    console.log("newList that updates state", newList);
+    setListData(newList);
+    await postDeleteItem(itemToDelete);
   }
 
   async function postCheckItem(ingredientName) {
@@ -57,7 +72,7 @@ function ShoppingList({ data, email }) {
             <ShoppingItem
               checkItem={checkItem}
               deleteItem={deleteItem}
-              key={index}
+              key={Math.floor(Math.random() * 50000)}
               data={item}
             />
           );
