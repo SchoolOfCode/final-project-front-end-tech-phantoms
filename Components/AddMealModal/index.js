@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import RecipeDayCard from "../RecipeDayCard";
 import { Modal, Button } from "@nextui-org/react";
-import AddToMealPlannerBtn from "../AddToMealPlannerBtn";
 
-export function AddMealModal({ email, setData, day }) {
+export function AddMealModal({ email, setData, day, currentData }) {
   const [ids, setIds] = useState(null);
+  const [curData, setCurData] = useState();
   // const [email, setEmail] = useState(null);
   // if (user) {
   //   setEmail(user.email);
@@ -21,10 +21,17 @@ export function AddMealModal({ email, setData, day }) {
     getSavedRecipesIDs();
   }, []);
   const [visible, setVisible] = useState(false);
-  const handler = () => setVisible(true);
+  const handler = () => {
+    setVisible(true);
+    setCurData(currentData);
+  };
+
   const closeHandler = () => {
     setVisible(false);
-    console.log("closed");
+  };
+  const cancelHandler = () => {
+    setData(curData);
+    closeHandler();
   };
   return (
     <div>
@@ -50,6 +57,9 @@ export function AddMealModal({ email, setData, day }) {
           </div>
         </Modal.Body>
         <Modal.Footer>
+          <Button auto css={{ background: "$ourGrey" }} onClick={cancelHandler}>
+            Cancel
+          </Button>
           <Button auto flat color="error" onClick={closeHandler}>
             Close
           </Button>

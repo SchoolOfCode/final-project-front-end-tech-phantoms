@@ -49,20 +49,21 @@ function MondayCard({ Monday, email, show }) {
                   src={recipe.recipeImage}
                 />
                 <Card.Body>
-                  <Text>{recipe.recipeName}</Text>
+                  <Text h4>{recipe.recipeName}</Text>
                 </Card.Body>
                 <Card.Footer>
-                  <Row justify="center">
+                  <Row justify="space-around">
                     {show && (
                       <Button
                         auto
                         size="sm"
                         color="error"
+                        ghost
                         onClick={() => {
                           handleDelete(recipe.id, "Monday");
                         }}
                       >
-                        Delete
+                        X
                       </Button>
                     )}
                     <Link href={recipe.linkToInstructions} passHref>
@@ -77,7 +78,12 @@ function MondayCard({ Monday, email, show }) {
           );
         })}
         {show && (
-          <AddMealModal email={email} setData={updateData} day={"Monday"} />
+          <AddMealModal
+            email={email}
+            setData={updateData}
+            currentData={data}
+            day={"Monday"}
+          />
         )}
       </Grid.Container>
     </div>

@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import AddToMealPlannerBtn from "../AddToMealPlannerBtn";
 import css from "./styles.module.css";
 import clock from "../../public/timeclock_tiemp_3924.png";

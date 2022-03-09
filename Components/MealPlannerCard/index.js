@@ -45,16 +45,6 @@ function MealPlannerCard({
             >
               Save Changes
             </Button>
-
-            <Button
-              size="sm"
-              css={{ background: "$ourGrey" }}
-              onClick={() => {
-                setShow(false);
-              }}
-            >
-              Cancel
-            </Button>
           </>
         )}
       </div>
