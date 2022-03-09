@@ -32,9 +32,15 @@ export default function Home() {
             <button>Meal Planner</button>
           </Link>
         )}
-        <Link href="/shoppingList" passHref>
-          <button>Shopping List</button>
-        </Link>
+        {user ? (
+          <Link href={"/shopping_list/" + user.email} passHref>
+            <button>Shopping List</button>
+          </Link>
+        ) : (
+          <Link href="/api/auth/[...auth0]" as="/api/auth/login" passHref>
+            <button>Shopping List</button>
+          </Link>
+        )}
       </main>
     </div>
   );

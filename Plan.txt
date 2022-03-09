@@ -31,7 +31,7 @@ array = [
 //     Checkbox that will strikethrough the text, post to json-server
 //     Button that will delete it, post to json-server
 
-ShoppingList page
+--ShoppingList page
 Create this component according to Figma designs
 Fetch shopping list from API for this user
 Display shopping list
