@@ -6,7 +6,7 @@ const ShoppingItem = ({ data, deleteItem, checkItem }) => {
     <li
       style={{ display: "flex", alignItems: "center", listStyleType: "none" }}
     >
-      <Checkbox onClick={() => {checkItem(data.ingredient)}} line checked={data.needToBuy}>
+      <Checkbox onClick={() => {checkItem(data.ingredient)}} line checked={!data.needToBuy}> {/*this is negated so correct info displays*/}
         {data.quantity} {data.ingredient}
       </Checkbox>
       <Spacer x={0.5} />
