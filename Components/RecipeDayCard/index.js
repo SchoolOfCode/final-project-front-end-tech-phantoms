@@ -24,8 +24,8 @@ function RecipeDayCard({ id, setData, day }) {
   }, []);
   return (
     <div key={recipe.label} className={css.container}>
-      <div>
-        <img src={recipe.image} height={100} width={100} alt="Recipe Image" />
+      <div className={css.imgContainer}>
+        <img src={recipe.image} className={css.image} alt="Recipe Image" borderRadius={50} />
       </div>
       <div>
         <h3>{recipe.label}</h3>

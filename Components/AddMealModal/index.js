@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import RecipeDayCard from "../RecipeDayCard";
-import { Modal, Button } from "@nextui-org/react";
+import { Modal, Button, Input } from "@nextui-org/react";
 
 export function AddMealModal({ email, setData, day, currentData }) {
   const [ids, setIds] = useState(null);
   const [curData, setCurData] = useState();
-  // const [email, setEmail] = useState(null);
-  // if (user) {
-  //   setEmail(user.email);
-  // }
-  // const email = user.email;
+  const [input, setInput] = useState("");
+
+  function handleChange(event) {
+    setInput(event.target.value);
+  }
   useEffect(() => {
     async function getSavedRecipesIDs() {
       const res = await fetch(
@@ -43,7 +43,14 @@ export function AddMealModal({ email, setData, day, currentData }) {
         aria-labelledby="modal-title"
         open={visible}
         onClose={closeHandler}
-      >
+      > <Modal.Header>
+        <Input
+          type="text"
+          placeholder="Search Saved Recipes..."
+          value={input}
+          onChange={handleChange}
+        />
+      </Modal.Header>
         <Modal.Body>
           <div>
             {ids?.map((id) => {

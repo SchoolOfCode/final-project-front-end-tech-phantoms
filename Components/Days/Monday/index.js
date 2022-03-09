@@ -44,7 +44,8 @@ function MondayCard({ Monday, email, show }) {
               <Card css={{ background: "$ourGrey" }} hoverable>
                 <Card.Image
                   height={150}
-                  width="100%"
+                  objectFit="cover"
+                  width={160}
                   alt="Recipe Image"
                   src={recipe.recipeImage}
                 />
