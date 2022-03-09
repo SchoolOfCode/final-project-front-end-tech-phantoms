@@ -18,7 +18,7 @@ const RecipeDetails = ({ data, recipeID }) => {
     // console.log("Ingredients to Add", newItems);
     //post body of data to API to add to shopping list
     const URI =
-      `http://localhost:3002/shopping/` +
+      `${process.env.NEXT_PUBLIC_API_URL}shopping/` +
       user.email;
     const response = await fetch(URI, {
       method: "POST",

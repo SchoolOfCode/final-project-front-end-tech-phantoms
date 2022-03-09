@@ -6,7 +6,7 @@ function ShoppingList({ data, email }) {
   const [listData, setListData] = useState(data);
 
   async function postDeleteItem(ingredientName) {
-    const fetchURL = `http://localhost:3002/shopping/${email}/delete/${ingredientName}`;
+    const fetchURL = `${process.env.NEXT_PUBLIC_API_URL}shopping/${email}/delete/${ingredientName}`;
 
     const res = await fetch(fetchURL, {
       method: "DELETE",
@@ -34,7 +34,7 @@ function ShoppingList({ data, email }) {
   }
 
   async function postCheckItem(ingredientName) {
-    const fetchURL = `http://localhost:3002/shopping/${email}/checkOff/${ingredientName}`;
+    const fetchURL = `${process.env.NEXT_PUBLIC_API_URL}shopping/${email}/checkOff/${ingredientName}`;
 
     const res = await fetch(fetchURL, {
       method: "POST",
@@ -84,7 +84,7 @@ function ShoppingList({ data, email }) {
 
 export async function getServerSideProps(context) {
   const email = encodeURI(context.params.email);
-  const fetchURL = `http://localhost:3002/shopping/${email}`;
+  const fetchURL = `${process.env.NEXT_PUBLIC_API_URL}shopping/${email}`;
   const res = await fetch(fetchURL);
   const data = await res.json();
   return { props: { email: email, data: data.payload[0].shoppingList } };
