@@ -3,9 +3,6 @@ import NavBar from "../../Components/NavBar";
 import SavedRecipesLayout from "../../Components/SavedRecipesLayout";
 
 function SavedRecipes({ recipeIDs, recipesData }) {
-  console.log("SavedRecipes - recipesData", recipesData !== undefined);
-  console.log("SavedRecipes - recipeIDs", recipeIDs);
-
   return (
     <>
       <NavBar />
@@ -35,9 +32,6 @@ export async function getServerSideProps(context) {
       return recipe;
     })
   );
-
-  // console.log("data.payload[0]", data.payload[0]); //only logs in VSCode Terminal
-  // console.log("recipesData", recipesData); //only logs in VSCode Terminal
 
   const recipeIDs = data.payload[0].saved_recipes.map((recipeID) => recipeID); //no idea why this is undefined if it isnt mapped to a new array before being passed as props
   console.log("props {recipeIDs}", recipeIDs);

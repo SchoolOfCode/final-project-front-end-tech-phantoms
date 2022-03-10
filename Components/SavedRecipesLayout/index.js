@@ -5,8 +5,6 @@ import css from "./style.module.css";
 
 function SavedRecipesLayout({ recipeIDs, data }) {
   const [recipesData, setData] = useState(data);
-  console.log("SavedRecipesLayout - data", recipesData !== undefined);
-  console.log("SavedRecipesLayout - recipeIDs", recipeIDs);
 
   function deleteSavedRecipe(recipeID) {
     // const index = recipeIDs.indexOf(recipeID);
