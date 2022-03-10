@@ -15,7 +15,7 @@ function SearchBar({ handleFetch }) {
 
   return (
     <Grid.Container gap={1} justify="center">
-    <div style={{display: "flex", flexDirection: "row"}}>
+    <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
       <Grid md>
         <Input
           type="text"
@@ -23,6 +23,7 @@ function SearchBar({ handleFetch }) {
           size="lg"
           bordered="true"
           borderWeight="normal"
+          required="true"
           value={input}
           onChange={handleChange}
         />
@@ -32,12 +33,11 @@ function SearchBar({ handleFetch }) {
           <a>
             <Button shadow auto>
               <Image
-                height={34}
-                width={34}
+              padding="1em"
+                height={35}
+                width={35}
                 alt={"Search Recipes"}
-                src={
-                  "https://cdn.icon-icons.com/icons2/1339/PNG/512/rightarrow_87483.png"
-                }
+                src="/arrow_right.svg"
               />
             </Button>
           </a>

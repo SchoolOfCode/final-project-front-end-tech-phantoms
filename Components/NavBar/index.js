@@ -30,14 +30,14 @@ function NavBar() {
             <Link href="/" passHref>
             <a>
               <Image
-                height={36}
-                width={36}
+                height={40}
+                width={40}
                 alt={"Phantom logo"}
                 src={"/little_ghost.svg"}
               /></a>
             </Link>
             <Link href="/" passHref><a>
-              <Text size="1em" weight="bold" style={{ paddingLeft: "5px" }}>
+              <Text size="1.5em" weight="normal" style={{ paddingLeft: "5px" }}>
                 Phantom Kitchen
               </Text></a>
             </Link>
