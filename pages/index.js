@@ -60,6 +60,34 @@ export default function Home() {
             </Link>
           )}
           <Spacer y={1} />
+
+          {user ? (
+            <Link href={"/saved_recipes/"+user.email} passHref>
+              <Button shadow color="gradient" size="xl">
+                <Image
+                  height={35}
+                  width={35}
+                  alt={"Saved Recipes Icon"}
+                  src="/book.svg"
+                />
+                <Spacer x={1} />
+                Saved Recipes
+              </Button>
+            </Link>
+          ) : (
+            <Link href="/api/auth/[...auth0]" as="/api/auth/login" passHref>
+              <Button shadow color="gradient" size="xl">
+                <Image
+                  height={35}
+                  width={35}
+                  alt={"Saved Recipes Icon"}
+                  src="/book.svg"
+                />
+                Saved Recipes
+              </Button>
+            </Link>
+          )}
+          <Spacer y={1} />
           {user ? (
             <Link href={"/shopping_list/" + user.email} passHref>
               <Button shadow color="gradient" size="xl">
@@ -89,21 +117,14 @@ export default function Home() {
           )}
           <Spacer y={2} />
           <Button size="lg" shadow color="secondary" ghost>
-            Filter by Meal Type
-          </Button>
-          <Spacer y={0.5} />
-
-          <Button size="lg" shadow color="secondary" ghost>
-            Filter by Diet
+            Recipe of the Day
           </Button>
           <Spacer y={0.5} />
           <Button size="lg" shadow color="secondary" ghost>
             Quick Meals
           </Button>
           <Spacer y={0.5} />
-          <Button size="lg" shadow color="secondary" ghost>
-            Recipe of the Day
-          </Button>
+          
         </div>
       </main>
     </div>

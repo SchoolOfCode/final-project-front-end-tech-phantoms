@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useUser } from "@auth0/nextjs-auth0";
 import NavBar from "../Components/NavBar";
+import { Avatar } from "@nextui-org/react";
 
 export default function Profile() {
   const { user, error, isLoading } = useUser();
@@ -11,26 +12,24 @@ export default function Profile() {
 
   if (user) {
     return (
-      <div>
+      <div style={{ textAlign: "center" }}>
         <NavBar />
-
-        <Link href="/" as="/" passHref>
-          <button>Back</button>
-        </Link>
-        <h1>Profile</h1>
+        <h2>Profile</h2>
+        <hr />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            justifyItems: "center",
+          }}
+        >
+          <Avatar src={user.picture} css={{ size: "120px" }} />
+        </div>
+        <h4>{user.email}</h4>
         <Link href="/api/auth/[...auth0]" as="/api/auth/logout" passHref>
           <button>Log Out</button>
         </Link>
-
-        <Image
-          src={user.picture}
-          width={150}
-          height={150}
-          alt="Profile Picture"
-        ></Image>
-
-        <h2>{user.name}</h2>
-        <h2>{user.email}</h2>
       </div>
     );
   }
