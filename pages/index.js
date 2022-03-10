@@ -1,10 +1,9 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
 import NavBar from "../Components/NavBar";
 import SearchBar from "../Components/SearchBar";
 import Link from "next/link";
 import Image from "next/image";
-import { Button, Grid, Spacer } from "@nextui-org/react";
+import { Button, Spacer } from "@nextui-org/react";
 import { useUser } from "@auth0/nextjs-auth0";
 
 export default function Home() {
@@ -62,7 +61,7 @@ export default function Home() {
           <Spacer y={1} />
 
           {user ? (
-            <Link href={"/saved_recipes/"+user.email} passHref>
+            <Link href={"/saved_recipes/" + user.email} passHref>
               <Button shadow color="gradient" size="xl">
                 <Image
                   height={35}
@@ -116,15 +115,97 @@ export default function Home() {
             </Link>
           )}
           <Spacer y={2} />
-          <Button size="lg" shadow color="secondary" ghost>
-            Recipe of the Day
-          </Button>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: "3px 50px",
+                  background: "#5EDEA7",
+                  width: "130px",
+                  height: "130px",
+                  margin: "3px",
+                }}
+              >
+                {/* <Button size="lg" shadow color="secondary" ghost> */}
+
+                <h4 style={{ textAlign: "center" }}>Filter by Meal</h4>
+                {/* </Button> */}
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: "50px 3px",
+                  background: "#5EDEA7",
+                  width: "130px",
+                  height: "130px",
+                  margin: "3px",
+                }}
+              >
+                {/* <Button size="lg" shadow color="secondary" ghost> */}
+
+                <h4 style={{ textAlign: "center" }}>Filter by Diet</h4>
+                {/* </Button> */}
+              </div>
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: "50px 3px",
+                  background: "#5EDEA7",
+                  width: "130px",
+                  height: "130px",
+                  margin: "3px",
+                }}
+              >
+                {/* <Button size="lg" shadow color="secondary" ghost> */}
+
+                <h4 style={{ textAlign: "center" }}>Recipe of the Day</h4>
+                {/* </Button> */}
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: "3px 50px",
+                  background: "#5EDEA7",
+                  width: "130px",
+                  height: "130px",
+                  margin: "3px",
+                }}
+              >
+                {/* <Button size="lg" shadow color="secondary" ghost> */}
+                <h4 style={{ textAlign: "center" }}>Quick Meals</h4>
+                {/* </Button> */}
+              </div>
+            </div>
+          </div>
           <Spacer y={0.5} />
-          <Button size="lg" shadow color="secondary" ghost>
-            Quick Meals
-          </Button>
-          <Spacer y={0.5} />
-          
         </div>
       </main>
     </div>
