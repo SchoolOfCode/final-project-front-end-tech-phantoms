@@ -4,11 +4,9 @@ import RecipeCard from "../RecipeCard";
 const Recipes = ({ data }) => {
   return (
     <div>
-      {data.map((item) => {
+      {data.map((item, index) => {
         return (
-          <>
-            <RecipeCard uri={item.recipe.uri} recipe={item.recipe} />
-          </>
+          <RecipeCard key={index} uri={item.recipe.uri} recipe={item.recipe} />
         );
       })}
     </div>

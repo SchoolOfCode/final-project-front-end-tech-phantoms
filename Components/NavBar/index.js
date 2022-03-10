@@ -28,17 +28,18 @@ function NavBar() {
             }}
           >
             <Link href="/" passHref>
+            <a>
               <Image
-                height={36}
-                width={36}
+                height={40}
+                width={40}
                 alt={"Phantom logo"}
                 src={"/little_ghost.svg"}
-              />
+              /></a>
             </Link>
-            <Link href="/" passHref>
-              <Text size="1em" weight="bold" style={{ paddingLeft: "5px" }}>
+            <Link href="/" passHref><a>
+              <Text size="1.5em" weight="normal" style={{ paddingLeft: "5px" }}>
                 Phantom Kitchen
-              </Text>
+              </Text></a>
             </Link>
           </div>
         </Grid>
@@ -47,12 +48,13 @@ function NavBar() {
 
         <Grid sm>
           <Link href="/profile" passHref>
+          <a>
             <Image
               height={36}
               width={36}
               src="/profile_icon.svg"
               alt="profile logo"
-            />
+            /></a>
           </Link>
         </Grid>
       </Grid.Container>

@@ -14,9 +14,9 @@ export async function getServerSideProps(context) {
     "https://api.edamam.com/api/recipes/v2/" +
     encodeURI(context.params.recipeID) +
     "?type=public&app_id=" +
-    process.env.EDAMAM_APP_ID +
+    process.env.NEXT_PUBLIC_EDAMAM_APP_ID +
     "&app_key=" +
-    process.env.EDAMAM_APP_KEY;
+    process.env.NEXT_PUBLIC_EDAMAM_APP_KEY;
 
   const res = await fetch(fetchURL);
   const data = await res.json();

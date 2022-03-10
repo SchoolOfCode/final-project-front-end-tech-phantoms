@@ -2,8 +2,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { AddMealModal } from "../../AddMealModal";
+import css from "../styles.module.css";
+import {
+  Grid,
+  Text,
+  Button,
+  Divider,
+  Container,
+  Row,
+  Card,
+} from "@nextui-org/react";
 
-function MondayCard({ Monday, email }) {
+function MondayCard({ Monday, email, show }) {
   const [data, setData] = useState(Monday);
 
   const handleDelete = async (id, day) => {
@@ -27,31 +37,56 @@ function MondayCard({ Monday, email }) {
   }
   return (
     <div>
-      <h2>Monday</h2>
-      {data.map((recipe) => {
-        return (
-          <div key={recipe.id}>
-            <Image
-              height={150}
-              width={150}
-              alt="Recipe Image"
-              src={recipe.recipeImage}
-            ></Image>
-            <h3>{recipe.recipeName}</h3>
-            <Link href={recipe.linkToInstructions} passHref>
-              <button>Method</button>
-            </Link>
-            <button
-              onClick={() => {
-                handleDelete(recipe.id, "Monday");
-              }}
-            >
-              Delete
-            </button>
-          </div>
-        );
-      })}
-      <AddMealModal email={email} setData={updateData} day={"Monday"} />
+      <Grid.Container gap={2} justify="flex-start">
+        {data.map((recipe) => {
+          return (
+            <Grid xs={5} key={recipe.id}>
+              <Card css={{ background: "$ourGrey" }} hoverable>
+                <Card.Image
+                  height={150}
+                  objectFit="cover"
+                  width={160}
+                  alt="Recipe Image"
+                  src={recipe.recipeImage}
+                />
+                <Card.Body>
+                  <Text h4>{recipe.recipeName}</Text>
+                </Card.Body>
+                <Card.Footer>
+                  <Row justify="space-around">
+                    {show && (
+                      <Button
+                        auto
+                        size="sm"
+                        color="error"
+                        ghost
+                        onClick={() => {
+                          handleDelete(recipe.id, "Monday");
+                        }}
+                      >
+                        X
+                      </Button>
+                    )}
+                    <Link href={recipe.linkToInstructions} passHref>
+                      <Button auto size="sm">
+                        Method
+                      </Button>
+                    </Link>
+                  </Row>
+                </Card.Footer>
+              </Card>
+            </Grid>
+          );
+        })}
+        {show && (
+          <AddMealModal
+            email={email}
+            setData={updateData}
+            currentData={data}
+            day={"Monday"}
+          />
+        )}
+      </Grid.Container>
     </div>
   );
 }

@@ -14,29 +14,35 @@ function SearchBar({ handleFetch }) {
   //Link to search results page with [query]
 
   return (
-    <Grid.Container gap={2} justify="center">
-      <Grid xs={6}>
+    <Grid.Container gap={1} justify="center">
+    <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
+      <Grid md>
         <Input
           type="text"
           placeholder="What are you looking for?"
+          size="lg"
+          bordered="true"
+          borderWeight="normal"
+          required="true"
           value={input}
           onChange={handleChange}
         />
       </Grid>
-      <Grid xs={3}>
+      <Grid sm>
         <Link href={"/search/" + input} passHref>
-          <Button auto>
-            <Image
-              height={50}
-              width={50}
-              alt={"Search Recipes"}
-              src={
-                "https://cdn.icon-icons.com/icons2/1339/PNG/512/rightarrow_87483.png"
-              }
-            />
-          </Button>
+          <a>
+            <Button shadow auto>
+              <Image
+              padding="1em"
+                height={35}
+                width={35}
+                alt={"Search Recipes"}
+                src="/arrow_right.svg"
+              />
+            </Button>
+          </a>
         </Link>
-      </Grid>
+      </Grid></div>
     </Grid.Container>
   );
 }

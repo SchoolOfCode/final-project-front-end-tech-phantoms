@@ -3,6 +3,8 @@ import styles from "../styles/Home.module.css";
 import NavBar from "../Components/NavBar";
 import SearchBar from "../Components/SearchBar";
 import Link from "next/link";
+import Image from "next/image";
+import { Button, Grid, Spacer } from "@nextui-org/react";
 import { useUser } from "@auth0/nextjs-auth0";
 
 export default function Home() {
@@ -21,25 +23,88 @@ export default function Home() {
       <main className={styles.main}>
         <NavBar />
         <SearchBar></SearchBar>
-        <h2 className={styles.title}>Welcome to Phantom Kitchen</h2>
-        {user ? (
-          <Link href="/mealPlanner" passHref>
-            <button>Meal Planner</button>
-          </Link>
-        ) : (
-          <Link href="/api/auth/[...auth0]" as="/api/auth/login" passHref>
-            <button>Meal Planner</button>
-          </Link>
-        )}
-        {user ? (
-          <Link href={"/saved_recipes/" + user.email} passHref>
-            <button>Saved Recipes</button>
-          </Link>
-        ) : (
-          <Link href="/api/auth/[...auth0]" as="/api/auth/login" passHref>
-            <button>Saved Recipes</button>
-          </Link>
-        )}
+        <Spacer y={1} />
+        <div
+          className="navigationButtons"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            marginLeft: "10vw",
+            marginRight: "10vw",
+          }}
+        >
+          {user ? (
+            <Link href="/mealPlanner" passHref>
+              <Button shadow color="gradient" size="xl">
+                <Image
+                  height={35}
+                  width={35}
+                  alt={"Meal Planner Icon"}
+                  src="/calendar.svg"
+                />
+                <Spacer x={1} />
+                Meal Planner
+              </Button>
+            </Link>
+          ) : (
+            <Link href="/api/auth/[...auth0]" as="/api/auth/login" passHref>
+              <Button shadow color="gradient" size="xl">
+                <Image
+                  height={35}
+                  width={35}
+                  alt={"Meal Planner Icon"}
+                  src="/calendar.svg"
+                />
+                Meal Planner
+              </Button>
+            </Link>
+          )}
+          <Spacer y={1} />
+          {user ? (
+            <Link href={"/shopping_list/" + user.email} passHref>
+              <Button shadow color="gradient" size="xl">
+                <Image
+                  height={35}
+                  width={35}
+                  alt={"Meal Planner Icon"}
+                  src="/list_icon.svg"
+                />
+                <Spacer x={1} />
+                Shopping List
+              </Button>
+            </Link>
+          ) : (
+            <Link href="/api/auth/[...auth0]" as="/api/auth/login" passHref>
+              <Button shadow color="gradient" size="xl">
+                <Image
+                  height={35}
+                  width={35}
+                  alt={"Meal Planner Icon"}
+                  src="/list_icon.svg"
+                />
+                <Spacer x={1} />
+                Shopping List
+              </Button>
+            </Link>
+          )}
+          <Spacer y={2} />
+          <Button size="lg" shadow color="secondary" ghost>
+            Filter by Meal Type
+          </Button>
+          <Spacer y={0.5} />
+
+          <Button size="lg" shadow color="secondary" ghost>
+            Filter by Diet
+          </Button>
+          <Spacer y={0.5} />
+          <Button size="lg" shadow color="secondary" ghost>
+            Quick Meals
+          </Button>
+          <Spacer y={0.5} />
+          <Button size="lg" shadow color="secondary" ghost>
+            Recipe of the Day
+          </Button>
+        </div>
       </main>
     </div>
   );

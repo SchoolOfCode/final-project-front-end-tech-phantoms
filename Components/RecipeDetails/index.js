@@ -2,8 +2,36 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SaveRecipeButton from "../SaveRecipeButton";
+import { useUser } from "@auth0/nextjs-auth0";
 
 const RecipeDetails = ({ data, recipeID }) => {
+  const { user } = useUser();
+  
+  async function addToShoppingList(ingredients) {
+    const newItems = ingredients.map((ingredient) => {
+      return {
+        ingredient: ingredient.food,
+        quantity: Math.max(1, Math.round(ingredient.quantity)),
+        needToBuy: true,
+      };
+    });
+    // console.log("Ingredients to Add", newItems);
+    //post body of data to API to add to shopping list
+    const URI =
+      `${process.env.NEXT_PUBLIC_API_URL}shopping/` +
+      user.email;
+    const response = await fetch(URI, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(newItems),
+    });
+    const updatedUserShoppingList = await response.json();
+    console.log(updatedUserShoppingList)
+  }
+
   return (
     <div>
       <Image
@@ -44,6 +72,11 @@ const RecipeDetails = ({ data, recipeID }) => {
         )}
       </p>
       <h2>Ingredients</h2>
+      {user ? (
+        <button onClick={()=>{addToShoppingList(data.ingredients)}}>Add to 🛒 </button>
+      ) : (
+        <button onClick={addToShoppingList}>Login to Add to 🛒 </button>
+      )}
       <ul>
         {data.ingredients.map((item) => {
           return <li key={item.food}>{item.text}</li>;
@@ -57,7 +90,7 @@ const RecipeDetails = ({ data, recipeID }) => {
       </Link>
       <p>on {data.source}</p>
       <hr />
-      <SaveRecipeButton recipeID={recipeID}/>
+      <SaveRecipeButton recipeID={recipeID} />
     </div>
   );
 };

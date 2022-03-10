@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import css from "./styles.module.css";
 
 function AddToMealPlannerBtn({ day, setData, image, label, url }) {
   const fetchURL = `http://localhost:3002/${day}`;
@@ -18,17 +19,19 @@ function AddToMealPlannerBtn({ day, setData, image, label, url }) {
         linkToInstructions: url,
       }),
     });
+    getUpdatedData();
   };
   async function getUpdatedData() {
     const res = await fetch(`http://localhost:3002/${day}`);
     const data = await res.json();
     setData(data);
   }
-  function callBoth() {
-    handlePost();
-    getUpdatedData();
-  }
-  return <button onClick={callBoth}>Add</button>;
+
+  return (
+    <button onClick={handlePost} className={css.btn}>
+      Add To Meal Planner
+    </button>
+  );
 }
 
 export default AddToMealPlannerBtn;
