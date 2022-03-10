@@ -4,9 +4,9 @@ import { Container, Card } from "@nextui-org/react";
 import css from "./style.module.css";
 
 function SavedRecipesLayout({ savedRecipesData }) {
-  const [recipeIDs, setRecipeIDs] = useState(savedRecipesData);
+  // const [recipeIDs, setRecipeIDs] = useState(savedRecipesData);
   const [recipeData, setRecipeData] = useState([]);
-
+  /* 
   useEffect(() => {
     async function getRecipeData() {
       //fetch all of the recipe id data at outlineColor
@@ -32,7 +32,7 @@ function SavedRecipesLayout({ savedRecipesData }) {
     }
     getRecipeData();
   }, []);
-
+ */
   function deleteSavedRecipe(recipeID) {
     const index = recipeIDs.indexOf(recipeID);
     const newState = [
