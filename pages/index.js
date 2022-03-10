@@ -134,7 +134,6 @@ export default function Home() {
                   background: "$ourGreen",
                   color: "white",
                   height: "130px",
-                  width: "220px",
                   boxShadow: "$md",
                   fontSize: "25px",
                   justifyContent: "center",
@@ -146,7 +145,15 @@ export default function Home() {
                   },
                 }}
               >
-                Filter by Meal
+                <p
+                  style={{
+                    textAlign: "center",
+                    fontSize: "23px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Filter by Meal
+                </p>
               </Card>
               <Spacer y={0.5} />
               <Card
@@ -159,7 +166,6 @@ export default function Home() {
                   background: "$ourGreen",
                   color: "white",
                   height: "130px",
-                  width: "220px",
                   boxShadow: "$md",
                   fontSize: "25px",
                   justifyContent: "center",
@@ -171,7 +177,15 @@ export default function Home() {
                   },
                 }}
               >
-                Filter by Diet
+                <p
+                  style={{
+                    textAlign: "center",
+                    fontSize: "23px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Filter by Diet
+                </p>
               </Card>
             </Grid>
             <Spacer x={0.5} />
@@ -185,12 +199,10 @@ export default function Home() {
                   background: "$ourGreen",
                   color: "white",
                   height: "130px",
-                  width: "220px",
                   boxShadow: "$md",
                   fontSize: "25px",
                   justifyContent: "center",
                   alignItems: "center",
-                  textAlign: "justify",
 
                   "&:hover": {
                     background: "$hoverGreen",
@@ -198,7 +210,13 @@ export default function Home() {
                   },
                 }}
               >
-                <p style={{ textAlign: "center", fontSize: "25px" }}>
+                <p
+                  style={{
+                    textAlign: "center",
+                    fontSize: "23px",
+                    fontWeight: "bold",
+                  }}
+                >
                   Recipe of the Day
                 </p>
               </Card>
@@ -214,7 +232,6 @@ export default function Home() {
                   background: "$ourGreen",
                   color: "white",
                   height: "130px",
-                  width: "220px",
                   boxShadow: "$md",
                   fontSize: "25px",
                   justifyContent: "center",
@@ -226,7 +243,15 @@ export default function Home() {
                   },
                 }}
               >
-                Quick Meals
+                <p
+                  style={{
+                    textAlign: "center",
+                    fontSize: "23px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Quick Meals
+                </p>
               </Card>
             </div>
           </Grid.Container>
