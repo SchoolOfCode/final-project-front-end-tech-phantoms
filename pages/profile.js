@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useUser } from "@auth0/nextjs-auth0";
 import NavBar from "../Components/NavBar";
+import { Avatar, Button } from "@nextui-org/react";
 
 export default function Profile() {
   const { user, error, isLoading } = useUser();
@@ -11,26 +12,40 @@ export default function Profile() {
 
   if (user) {
     return (
-      <div>
+      <div style={{ textAlign: "center" }}>
         <NavBar />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Link href="/" passHref>
+            <Button size="xs" color="success">
+              Back
+            </Button>
+          </Link>
 
-        <Link href="/" as="/" passHref>
-          <button>Back</button>
-        </Link>
-        <h1>Profile</h1>
-        <Link href="/api/auth/[...auth0]" as="/api/auth/logout" passHref>
-          <button>Log Out</button>
-        </Link>
-
-        <Image
-          src={user.picture}
-          width={150}
-          height={150}
-          alt="Profile Picture"
-        ></Image>
-
-        <h2>{user.name}</h2>
-        <h2>{user.email}</h2>
+          <h2>Profile</h2>
+          <Link href="/api/auth/[...auth0]" as="/api/auth/logout" passHref>
+            <Button size="xs" color="error">
+              Log Out
+            </Button>
+          </Link>
+        </div>
+        <hr />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Avatar src={user.picture} css={{ size: "120px" }} />
+          <h4>{user.email}</h4>
+        </div>
       </div>
     );
   }
