@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import RecipeDayCard from "../RecipeDayCard";
-import { Modal, Button } from "@nextui-org/react";
-import AddToMealPlannerBtn from "../AddToMealPlannerBtn";
+import { Modal, Button, Input } from "@nextui-org/react";
 
-export function AddMealModal({ email, setData, day }) {
+export function AddMealModal({ email, setData, day, currentData }) {
   const [ids, setIds] = useState(null);
-  // const [email, setEmail] = useState(null);
-  // if (user) {
-  //   setEmail(user.email);
-  // }
-  // const email = user.email;
+  const [curData, setCurData] = useState();
+  const [input, setInput] = useState("");
+
+  function handleChange(event) {
+    setInput(event.target.value);
+  }
   useEffect(() => {
     async function getSavedRecipesIDs() {
       const res = await fetch(
@@ -21,10 +21,17 @@ export function AddMealModal({ email, setData, day }) {
     getSavedRecipesIDs();
   }, []);
   const [visible, setVisible] = useState(false);
-  const handler = () => setVisible(true);
+  const handler = () => {
+    setVisible(true);
+    setCurData(currentData);
+  };
+
   const closeHandler = () => {
     setVisible(false);
-    console.log("closed");
+  };
+  const cancelHandler = () => {
+    setData(curData);
+    closeHandler();
   };
   return (
     <div>
@@ -36,7 +43,14 @@ export function AddMealModal({ email, setData, day }) {
         aria-labelledby="modal-title"
         open={visible}
         onClose={closeHandler}
-      >
+      > <Modal.Header>
+        <Input
+          type="text"
+          placeholder="Search Saved Recipes..."
+          value={input}
+          onChange={handleChange}
+        />
+      </Modal.Header>
         <Modal.Body>
           <div>
             {ids?.map((id) => {
@@ -50,6 +64,9 @@ export function AddMealModal({ email, setData, day }) {
           </div>
         </Modal.Body>
         <Modal.Footer>
+          <Button auto css={{ background: "$ourGrey" }} onClick={cancelHandler}>
+            Cancel
+          </Button>
           <Button auto flat color="error" onClick={closeHandler}>
             Close
           </Button>
