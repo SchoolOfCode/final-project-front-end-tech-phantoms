@@ -21,7 +21,7 @@ export async function getServerSideProps(context) {
   const res = await fetch(fetchURL);
   const data = await res.json();
 
-  console.log(fetchURL);
+  // console.log(fetchURL);
   return {
     props: { data: data.recipe, recipeID: context.params.recipeID },
   };
