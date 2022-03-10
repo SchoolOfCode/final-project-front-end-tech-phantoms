@@ -3,13 +3,13 @@ import NavBar from "../Components/NavBar";
 import SearchBar from "../Components/SearchBar";
 import Link from "next/link";
 import Image from "next/image";
-import { Button, Spacer } from "@nextui-org/react";
+import { Button, Card, Grid, Spacer } from "@nextui-org/react";
 import { useUser } from "@auth0/nextjs-auth0";
 
 export default function Home() {
   const { user } = useUser();
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Phantom Kitchen</title>
         <meta
@@ -19,7 +19,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <main>
         <NavBar />
         <SearchBar></SearchBar>
         <Spacer y={1} />
@@ -114,8 +114,8 @@ export default function Home() {
               </Button>
             </Link>
           )}
-          <Spacer y={2} />
-          <div
+          <Spacer y={1} />
+          <Grid.Container
             style={{
               display: "flex",
               justifyContent: "center",
@@ -123,88 +123,113 @@ export default function Home() {
               flexDirection: "column",
             }}
           >
-            <div
-              style={{
-                display: "flex",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
+            <Grid style={{ display: "flex" }}>
+              <Card
+                shadow
+                size="xs"
+                auto
+                css={{
                   borderRadius: "3px 50px",
-                  background: "#5EDEA7",
-                  width: "130px",
+                  border: "$space$1 solid transparent",
+                  background: "$ourGreen",
+                  color: "white",
                   height: "130px",
-                  margin: "3px",
-                }}
-              >
-                {/* <Button size="lg" shadow color="secondary" ghost> */}
-
-                <h4 style={{ textAlign: "center" }}>Filter by Meal</h4>
-                {/* </Button> */}
-              </div>
-              <div
-                style={{
-                  display: "flex",
+                  width: "220px",
+                  boxShadow: "$md",
+                  fontSize: "25px",
                   justifyContent: "center",
                   alignItems: "center",
+
+                  "&:hover": {
+                    background: "$hoverGreen",
+                    color: "black",
+                  },
+                }}
+              >
+                Filter by Meal
+              </Card>
+              <Spacer y={0.5} />
+              <Card
+                shadow
+                size="xs"
+                auto
+                css={{
                   borderRadius: "50px 3px",
-                  background: "#5EDEA7",
-                  width: "130px",
+                  border: "$space$1 solid transparent",
+                  background: "$ourGreen",
+                  color: "white",
                   height: "130px",
-                  margin: "3px",
-                }}
-              >
-                {/* <Button size="lg" shadow color="secondary" ghost> */}
-
-                <h4 style={{ textAlign: "center" }}>Filter by Diet</h4>
-                {/* </Button> */}
-              </div>
-            </div>
-
-            <div
-              style={{
-                display: "flex",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
+                  width: "220px",
+                  boxShadow: "$md",
+                  fontSize: "25px",
                   justifyContent: "center",
                   alignItems: "center",
+
+                  "&:hover": {
+                    background: "$hoverGreen",
+                    color: "black",
+                  },
+                }}
+              >
+                Filter by Diet
+              </Card>
+            </Grid>
+            <Spacer x={0.5} />
+            <div style={{ display: "flex" }}>
+              <Card
+                shadow
+                auto
+                css={{
                   borderRadius: "50px 3px",
-                  background: "#5EDEA7",
-                  width: "130px",
+                  border: "$space$1 solid transparent",
+                  background: "$ourGreen",
+                  color: "white",
                   height: "130px",
-                  margin: "3px",
-                }}
-              >
-                {/* <Button size="lg" shadow color="secondary" ghost> */}
-
-                <h4 style={{ textAlign: "center" }}>Recipe of the Day</h4>
-                {/* </Button> */}
-              </div>
-
-              <div
-                style={{
-                  display: "flex",
+                  width: "220px",
+                  boxShadow: "$md",
+                  fontSize: "25px",
                   justifyContent: "center",
                   alignItems: "center",
+                  textAlign: "justify",
+
+                  "&:hover": {
+                    background: "$hoverGreen",
+                    color: "black",
+                  },
+                }}
+              >
+                <p style={{ textAlign: "center", fontSize: "25px" }}>
+                  Recipe of the Day
+                </p>
+              </Card>
+              <Spacer y={0.5} />
+
+              <Card
+                shadow
+                size="xs"
+                auto
+                css={{
                   borderRadius: "3px 50px",
-                  background: "#5EDEA7",
-                  width: "130px",
+                  border: "$space$1 solid transparent",
+                  background: "$ourGreen",
+                  color: "white",
                   height: "130px",
-                  margin: "3px",
+                  width: "220px",
+                  boxShadow: "$md",
+                  fontSize: "25px",
+                  justifyContent: "center",
+                  alignItems: "center",
+
+                  "&:hover": {
+                    background: "$hoverGreen",
+                    color: "black",
+                  },
                 }}
               >
-                {/* <Button size="lg" shadow color="secondary" ghost> */}
-                <h4 style={{ textAlign: "center" }}>Quick Meals</h4>
-                {/* </Button> */}
-              </div>
+                Quick Meals
+              </Card>
             </div>
-          </div>
+          </Grid.Container>
           <Spacer y={0.5} />
         </div>
       </main>
