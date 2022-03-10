@@ -10,24 +10,6 @@ function SavedRecipeCard({ recipeID, deleteSavedRecipe }) {
   // const [recipeData, setRecipeData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // useEffect(() => {
-  //   async function getRecipeData() {
-  //     try {
-  //       setIsLoading(true);
-  //       const fetchURL = `https://api.edamam.com/api/recipes/v2/${recipeID}?type=public&app_id=${process.env.NEXT_PUBLIC_EDAMAM_APP_ID}&app_key=${process.env.NEXT_PUBLIC_EDAMAM_APP_KEY}`;
-  //       const res = await fetch(fetchURL);
-  //       const data = await res.json();
-  //       setRecipeData(data.recipe);
-  //       setIsLoading(false);
-  //       console.log("useEffect is being called");
-  //     } catch (err) {
-  //       console.log("Error 429 Too many requests to API");
-  //       setTimeout(getRecipeData, 15000);
-  //     }
-  //   }
-  //   getRecipeData();
-  // }, [recipeID]);
-
   return isLoading ? (
     <h1>Loading......</h1>
   ) : (
