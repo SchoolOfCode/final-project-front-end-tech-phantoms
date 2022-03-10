@@ -5,27 +5,30 @@ import css from "./style.module.css";
 
 function SavedRecipesLayout({ savedRecipesData }) {
   const [recipeIDs, setRecipeIDs] = useState(savedRecipesData);
-  const [recipeData, setRecipeData] = useState(null);
+  const [recipeData, setRecipeData] = useState([]);
 
   useEffect(() => {
     async function getRecipeData() {
       //fetch all of the recipe id data at outlineColor
       //store all of that in recipeData
-      //map tyhrough recipeData and render the components we need
+      //map through recipeData and render the components we need
       // when a user deletes something filter it from recipeData
-      const fetches = recipeIDs.map((recipeID) => {
+      const fetchURLs = recipeIDs.map((recipeID) => {
         return fetch(
           `https://api.edamam.com/api/recipes/v2/${recipeID}?type=public&app_id=${process.env.NEXT_PUBLIC_EDAMAM_APP_ID}&app_key=${process.env.NEXT_PUBLIC_EDAMAM_APP_KEY}`
         );
       });
-      const allPromise = Promise.all([fetches]);
-      const res = await allPromise;
-      const data = res.map(async (resItem) => {
-        const test = await resItem.json();
-        return test;
-      });
-      console.log(data);
-      //cant resolve each promise with .json
+      const allPromises = await Promise.all(fetchURLs);
+
+      const allRecipeData = await Promise.all(
+        allPromises.map(async (response) => {
+          const recipe = await response.json();
+          return recipe;
+        })
+      );
+
+      console.log("allRecipeData:", allRecipeData);
+      setRecipeData(allRecipeData);
     }
     getRecipeData();
   }, []);
@@ -37,7 +40,7 @@ function SavedRecipesLayout({ savedRecipesData }) {
       ...recipeIDs.slice(index + 1, recipeIDs.length),
     ];
     setRecipeIDs(newState);
-    console.log("Button has been clicked", recipeID);
+    console.log("deleteSavedRecipe() clicked, for:", recipeID);
   }
   return (
     <div>
