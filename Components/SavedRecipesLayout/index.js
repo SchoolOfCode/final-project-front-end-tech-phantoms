@@ -14,7 +14,6 @@ function SavedRecipesLayout({ savedRecipesData }) {
         return (
           <>
             <Container className={css.container}>
-              {/* <div> */}
               <Card
                 className={css.card}
                 shadow={true}
@@ -25,7 +24,6 @@ function SavedRecipesLayout({ savedRecipesData }) {
               >
                 <SavedRecipeCard recipeID={item} key={index} />
               </Card>
-              {/* </div> */}
             </Container>
           </>
         );
