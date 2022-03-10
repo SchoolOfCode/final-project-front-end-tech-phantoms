@@ -44,7 +44,8 @@ function SundayCard({ Sunday, email, show }) {
               <Card css={{ background: "$ourGrey" }} hoverable>
                 <Card.Image
                   height={150}
-                  width="100%"
+                  objectFit="cover"
+                  width={160}
                   alt="Recipe Image"
                   src={recipe.recipeImage}
                 />
@@ -58,11 +59,12 @@ function SundayCard({ Sunday, email, show }) {
                         auto
                         size="sm"
                         color="error"
+                        ghost
                         onClick={() => {
-                          handleDelete(recipe.id, "Sunday");
+                          handleDelete(recipe.id, "Monday");
                         }}
                       >
-                        Delete
+                        X
                       </Button>
                     )}
                     <Link href={recipe.linkToInstructions} passHref>

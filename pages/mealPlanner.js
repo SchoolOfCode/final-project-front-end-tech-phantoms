@@ -1,12 +1,9 @@
 import NavBar from "../Components/NavBar";
 import MealPlannerCard from "../Components/MealPlannerCard";
-import { useState, useEffect } from "react";
 import { useUser } from "@auth0/nextjs-auth0";
-import { AddMealModal } from "../Components/AddMealModal";
 
 export async function getServerSideProps(context) {
   const [
-    savedRecipesRes,
     MondayRes,
     TuesdayRes,
     WednesdayRes,
@@ -15,7 +12,6 @@ export async function getServerSideProps(context) {
     SaturdayRes,
     SundayRes,
   ] = await Promise.all([
-    fetch("http://localhost:3001/savedRecipes"),
     fetch("http://localhost:3002/Monday"),
     fetch("http://localhost:3002/Tuesday"),
     fetch("http://localhost:3002/Wednesday"),
@@ -24,29 +20,19 @@ export async function getServerSideProps(context) {
     fetch("http://localhost:3002/Saturday"),
     fetch("http://localhost:3002/Sunday"),
   ]);
-  const [
-    savedRecipes,
-    Monday,
-    Tuesday,
-    Wednesday,
-    Thursday,
-    Friday,
-    Saturday,
-    Sunday,
-  ] = await Promise.all([
-    savedRecipesRes.json(),
-    MondayRes.json(),
-    TuesdayRes.json(),
-    WednesdayRes.json(),
-    ThursdayRes.json(),
-    FridayRes.json(),
-    SaturdayRes.json(),
-    SundayRes.json(),
-  ]);
+  const [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday] =
+    await Promise.all([
+      MondayRes.json(),
+      TuesdayRes.json(),
+      WednesdayRes.json(),
+      ThursdayRes.json(),
+      FridayRes.json(),
+      SaturdayRes.json(),
+      SundayRes.json(),
+    ]);
 
   return {
     props: {
-      savedRecipes,
       Monday,
       Tuesday,
       Wednesday,
@@ -59,7 +45,6 @@ export async function getServerSideProps(context) {
 }
 
 function MealPlanner({
-  savedRecipes,
   Monday,
   Tuesday,
   Wednesday,
