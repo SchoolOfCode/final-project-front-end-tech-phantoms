@@ -29,7 +29,7 @@ function UnSaveRecipeButton({ recipeID, setShow }) {
 
   return (
     <Button color="error" size="xs" onClick={handleClick}>
-      Delete recipe
+      Delete Recipe
     </Button>
   );
 }

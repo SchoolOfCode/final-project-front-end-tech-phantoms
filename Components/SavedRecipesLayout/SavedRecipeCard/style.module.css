@@ -1,0 +1,28 @@
+.imageContainer {
+  display: flex;
+  height: 120px;
+  width: 120px;
+}
+.image {
+  height: 100%;
+  width: 100%;
+  /* object-fit: cover; */
+}
+.infoContainer {
+  margin-left: 10px;
+}
+.titleContainer {
+  overflow: hidden;
+  max-width: 20ch;
+}
+.cookingContainer {
+  display: flex;
+  gap: 1vw;
+  /* justify-content: center; */
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 1vw;
+  /* justify-content: center; */
+}
