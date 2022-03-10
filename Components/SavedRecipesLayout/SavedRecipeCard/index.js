@@ -6,10 +6,9 @@ import UnSaveRecipeButton from "../../UnSaveRecipeButton";
 import { Grid, Card } from "@nextui-org/react";
 import css from "./style.module.css";
 
-function SavedRecipeCard({ recipeID }) {
+function SavedRecipeCard({ recipeID, deleteSavedRecipe }) {
   const [recipeData, setRecipeData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [show, setShow] = useState(true);
 
   useEffect(() => {
     async function getRecipeData() {
@@ -20,6 +19,7 @@ function SavedRecipeCard({ recipeID }) {
         const data = await res.json();
         setRecipeData(data.recipe);
         setIsLoading(false);
+        console.log("useEffect is being called");
       } catch (err) {
         console.log("Error 429 Too many requests to API");
         setTimeout(getRecipeData, 15000);
@@ -30,7 +30,7 @@ function SavedRecipeCard({ recipeID }) {
 
   return isLoading ? (
     <h1>Loading......</h1>
-  ) : show ? (
+  ) : (
     <Grid.Container>
       <Grid>
         <div className={css.imageContainer}>
@@ -89,7 +89,7 @@ function SavedRecipeCard({ recipeID }) {
                 </Link>
               </a>
               <UnSaveRecipeButton
-                setShow={setShow}
+                deleteSavedRecipe={deleteSavedRecipe}
                 recipeID={recipeID}
               ></UnSaveRecipeButton>
             </div>
@@ -97,8 +97,6 @@ function SavedRecipeCard({ recipeID }) {
         </Grid>
       </Grid>
     </Grid.Container>
-  ) : (
-    <div></div>
   );
 }
 
