@@ -6,13 +6,8 @@ import UnSaveRecipeButton from "../../UnSaveRecipeButton";
 import { Grid, Card } from "@nextui-org/react";
 import css from "./style.module.css";
 
-function SavedRecipeCard({ recipeID, deleteSavedRecipe }) {
-  // const [recipeData, setRecipeData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  return isLoading ? (
-    <h1>Loading......</h1>
-  ) : (
+function SavedRecipeCard({ recipeID, data, deleteSavedRecipe }) {
+  return (
     <Grid.Container>
       <Grid>
         <div className={css.imageContainer}>
@@ -21,7 +16,7 @@ function SavedRecipeCard({ recipeID, deleteSavedRecipe }) {
               layout="fill"
               width={120}
               height={120}
-              src={recipeData.image}
+              src={data.image}
               alt={"Recipe Image"}
             />
           </div>
@@ -31,7 +26,7 @@ function SavedRecipeCard({ recipeID, deleteSavedRecipe }) {
         <Grid className={css.infoContainer}>
           <Grid>
             <div className={css.titleContainer}>
-              <h3>{recipeData.label.substr(0, 16)}</h3>
+              <h3>{data.label.substr(0, 16)}</h3>
             </div>
           </Grid>
           <Grid>
@@ -45,8 +40,8 @@ function SavedRecipeCard({ recipeID, deleteSavedRecipe }) {
                 />
               </Grid>
               <Grid>
-                {recipeData.totalTime > 0 ? (
-                  <p>{recipeData.totalTime + "'"} </p>
+                {data.totalTime > 0 ? (
+                  <p>{data.totalTime + "'"} </p>
                 ) : (
                   <p>{"20'"}</p>
                 )}
@@ -54,7 +49,7 @@ function SavedRecipeCard({ recipeID, deleteSavedRecipe }) {
             </div>
           </Grid>
           <Grid>
-            {recipeData.healthLabels.includes("Vegetarian") && (
+            {data.healthLabels.includes("Vegetarian") && (
               <Image
                 height={25}
                 width={25}

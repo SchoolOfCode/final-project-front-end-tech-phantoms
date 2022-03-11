@@ -5,14 +5,16 @@ import css from "./style.module.css";
 
 function SavedRecipesLayout({ recipeIDs, data }) {
   const [recipesData, setData] = useState(data);
+  console.log("recipesData state:", recipesData);
 
   function deleteSavedRecipe(recipeID) {
-    // const index = recipeIDs.indexOf(recipeID);
-    // const newState = [
-    //   ...recipeIDs.slice(0, index),
-    //   ...recipeIDs.slice(index + 1, recipeIDs.length),
-    // ];
-    // setRecipeIDs(newState);
+    const index = recipeIDs.indexOf(recipeID);
+
+    const newState = [
+      ...recipesData.slice(0, index),
+      ...recipesData.slice(index + 1, recipesData.length),
+    ];
+    setData(newState);
     console.log("deleteSavedRecipe() clicked, for:", recipeID);
   }
   return (
@@ -23,7 +25,7 @@ function SavedRecipesLayout({ recipeIDs, data }) {
       </div>
       {recipesData.map((item, index) => {
         return (
-          <div /* key={recipeIDs[index]} */>
+          <div key={recipeIDs[index]}>
             <Container className={css.container}>
               <Card
                 className={css.card}
@@ -35,8 +37,9 @@ function SavedRecipesLayout({ recipeIDs, data }) {
               >
                 <SavedRecipeCard
                   deleteSavedRecipe={deleteSavedRecipe}
-                  // recipeID={recipeIDs[index]}
-                  // key={recipeIDs[index]}
+                  recipeID={recipeIDs[index]}
+                  data={item.recipe}
+                  key={recipeIDs[index] + Math.round(Math.random(50000))}
                 />
               </Card>
             </Container>
