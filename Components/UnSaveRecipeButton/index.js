@@ -2,10 +2,10 @@ import React from "react";
 import { useUser } from "@auth0/nextjs-auth0";
 import { Button } from "@nextui-org/react";
 
-function UnSaveRecipeButton({ recipeID, setShow }) {
+function UnSaveRecipeButton({ recipeID, deleteSavedRecipe }) {
   const { user } = useUser();
 
-  async function deleteSavedRecipe() {
+  async function postDeleteSavedRecipe() {
     const email = user.email;
     const uri =
       `https://dev-backend-phantom-kitchen.herokuapp.com/users/` +
@@ -23,8 +23,8 @@ function UnSaveRecipeButton({ recipeID, setShow }) {
   }
 
   async function handleClick() {
-    await deleteSavedRecipe();
-    setShow(false);
+    await postDeleteSavedRecipe();
+    deleteSavedRecipe(recipeID);
   }
 
   return (
