@@ -1,15 +1,17 @@
 import React from "react";
 import RecipeCard from "../RecipeCard";
+import { Grid } from "@nextui-org/react";
 
 const Recipes = ({ data }) => {
   return (
-    <div>
+    <Grid.Container gap={2} justify="center">
       {data.map((item, index) => {
         return (
+          
           <RecipeCard key={index} uri={item.recipe.uri} recipe={item.recipe} />
         );
       })}
-    </div>
+    </Grid.Container>
   );
 };
 
