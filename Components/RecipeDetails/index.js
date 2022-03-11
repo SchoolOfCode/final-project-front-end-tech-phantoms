@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import SaveRecipeButton from "../SaveRecipeButton";
 import { useUser } from "@auth0/nextjs-auth0";
+import NavBar from "../NavBar";
 
 const RecipeDetails = ({ data, recipeID }) => {
   const { user } = useUser();
@@ -34,6 +35,7 @@ const RecipeDetails = ({ data, recipeID }) => {
 
   return (
     <div>
+    <NavBar/>
       <Image
         alt="Recipe banner"
         src={data.image}

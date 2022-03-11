@@ -4,17 +4,12 @@ import { NextUIProvider, createTheme } from "@nextui-org/react";
 
 function MyApp({ Component, pageProps }) {
   const theme = createTheme({
-    type: "ththth",
+    type: "ourColors",
     theme: {
       colors: {
-        // gradient:
-        // "linear-gradient(112deg, $blue100 -25%, $pink500 -10%, $purple500 80%)",
-        // link: "#5E1DAD",
-
-        // you can also create your own color
         ourGrey: "#C4C4C4",
-
-        // ...  more colors
+        ourGreen: "#5EDEA7",
+        hoverGreen: "#7AF5C0",
       },
       space: {},
       fonts: {},

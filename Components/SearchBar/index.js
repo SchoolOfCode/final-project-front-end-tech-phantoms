@@ -21,6 +21,7 @@ function SearchBar({ handleFetch }) {
           type="text"
           placeholder="What are you looking for?"
           size="lg"
+          width="50vw"
           bordered="true"
           borderWeight="normal"
           required="true"
@@ -31,7 +32,7 @@ function SearchBar({ handleFetch }) {
       <Grid sm>
         <Link href={"/search/" + input} passHref>
           <a>
-            <Button shadow auto>
+            <Button height="10em" shadow auto>
               <Image
               padding="1em"
                 height={35}
