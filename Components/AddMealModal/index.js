@@ -44,7 +44,6 @@ export function AddMealModal({ email, setData, day, currentData }) {
         open={visible}
         onClose={closeHandler}
       >
-        {" "}
         <Modal.Header>
           <Input
             type="text"
@@ -59,7 +58,7 @@ export function AddMealModal({ email, setData, day, currentData }) {
             <div>
               {ids?.map((id) => {
                 return (
-                  <>
+                  <div key={id}>
                     <RecipeDayCard
                       id={id}
                       key={id}
@@ -68,7 +67,7 @@ export function AddMealModal({ email, setData, day, currentData }) {
                       currentData={currentData}
                     />
                     <br />
-                  </>
+                  </div>
                 );
               })}
             </div>

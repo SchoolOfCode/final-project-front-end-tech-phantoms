@@ -127,7 +127,6 @@ export default function Home() {
               <Card
                 shadow
                 size="xs"
-                auto
                 css={{
                   borderRadius: "3px 50px",
                   border: "$space$1 solid transparent",
@@ -159,7 +158,6 @@ export default function Home() {
               <Card
                 shadow
                 size="xs"
-                auto
                 css={{
                   borderRadius: "50px 3px",
                   border: "$space$1 solid transparent",
@@ -192,7 +190,6 @@ export default function Home() {
             <div style={{ display: "flex" }}>
               <Card
                 shadow
-                auto
                 css={{
                   borderRadius: "50px 3px",
                   border: "$space$1 solid transparent",
@@ -225,7 +222,6 @@ export default function Home() {
               <Card
                 shadow
                 size="xs"
-                auto
                 css={{
                   borderRadius: "3px 50px",
                   border: "$space$1 solid transparent",
