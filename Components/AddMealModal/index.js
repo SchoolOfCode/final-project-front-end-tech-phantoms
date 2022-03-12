@@ -51,6 +51,7 @@ export function AddMealModal({ email, setData, day, currentData }) {
             placeholder="Search Saved Recipes..."
             value={input}
             onChange={handleChange}
+            clearable
           />
         </Modal.Header>
         <Modal.Body>
@@ -64,6 +65,7 @@ export function AddMealModal({ email, setData, day, currentData }) {
                       key={id}
                       setData={setData}
                       day={day}
+                      currentData={currentData}
                     />
                     <br />
                   </>

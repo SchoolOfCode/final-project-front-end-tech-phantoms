@@ -16,24 +16,15 @@ import {
 function WednesdayCard({ Wednesday, email, show }) {
   const [data, setData] = useState(Wednesday);
 
-  const handleDelete = async (id, day) => {
-    const fetchURL = `${process.env.NEXT_PUBLIC_API_URL}day/${day}/${id}`;
-    const response = await fetch(fetchURL, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: null,
-    });
-
+  const handleDelete = async (id) => {
     const newData = data.filter((i) => {
       return i.id !== id;
     });
     setData(newData);
   };
 
-  function updateData(daata) {
-    setData(daata);
+  function updateData(newData) {
+    setData(newData);
   }
   return (
     <div>
@@ -79,7 +70,12 @@ function WednesdayCard({ Wednesday, email, show }) {
           );
         })}
         {show && (
-          <AddMealModal email={email} setData={updateData} day={"Wednesday"} />
+          <AddMealModal
+            email={email}
+            setData={updateData}
+            day={"Wednesday"}
+            currentData={data}
+          />
         )}
       </Grid.Container>
     </div>

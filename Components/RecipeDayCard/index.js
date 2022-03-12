@@ -7,7 +7,7 @@ import clock from "../../public/timeclock_tiemp_3924.png";
 import veget from "../../public/vegetarian_icon_130798.png";
 import vegan from "../../public/vegan.png";
 
-function RecipeDayCard({ id, setData, day }) {
+function RecipeDayCard({ id, setData, day, currentData }) {
   const [recipe, setRecipe] = useState([]);
 
   useEffect(() => {
@@ -59,6 +59,7 @@ function RecipeDayCard({ id, setData, day }) {
           image={recipe.image}
           label={recipe.label}
           url={recipe.url}
+          currentData={currentData}
         />
       </div>
     </div>
