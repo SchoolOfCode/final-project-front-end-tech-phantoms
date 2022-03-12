@@ -1,17 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { AddMealModal } from "../../AddMealModal";
-import css from "../styles.module.css";
-import {
-  Grid,
-  Text,
-  Button,
-  Divider,
-  Container,
-  Row,
-  Card,
-} from "@nextui-org/react";
+import { Grid, Text, Button, Row, Card } from "@nextui-org/react";
 
 function FridayCard({ Friday, email, show }) {
   const [data, setData] = useState(Friday);

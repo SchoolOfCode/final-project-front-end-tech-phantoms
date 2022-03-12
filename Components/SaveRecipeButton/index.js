@@ -1,7 +1,6 @@
-import React from "react";
 import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0";
-import { Button, Grid } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 
 function SaveRecipeButton({ recipeID }) {
   const { user } = useUser();

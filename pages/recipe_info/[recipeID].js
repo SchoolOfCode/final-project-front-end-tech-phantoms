@@ -1,5 +1,4 @@
 import RecipeDetails from "../../Components/RecipeDetails";
-import React from "react";
 
 const RecipeInfoLayout = (props) => {
   return (

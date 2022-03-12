@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { useUser } from "@auth0/nextjs-auth0";
 import NavBar from "../Components/NavBar";
 import { Avatar, Button } from "@nextui-org/react";
