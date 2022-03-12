@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0";
 import { Button } from "@nextui-org/react";
+import { useState } from "react";
 
 function SaveRecipeButton({ recipeID }) {
+  const [added, setAdded] = useState(false);
   const { user } = useUser();
 
   async function postSavedRecipe() {
@@ -24,14 +26,23 @@ function SaveRecipeButton({ recipeID }) {
   }
 
   async function handleClick() {
+    setAdded(true);
     await postSavedRecipe();
   }
 
   if (user) {
     return (
-      <Button auto onClick={handleClick}>
-        Save recipe
-      </Button>
+      <>
+        {!added ? (
+          <Button auto onClick={handleClick}>
+            Save recipe
+          </Button>
+        ) : (
+          <Button auto color="success">
+            Added
+          </Button>
+        )}
+      </>
     );
   }
 
