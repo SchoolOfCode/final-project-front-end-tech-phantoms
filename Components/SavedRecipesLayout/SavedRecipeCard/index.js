@@ -6,31 +6,8 @@ import UnSaveRecipeButton from "../../UnSaveRecipeButton";
 import { Grid, Card } from "@nextui-org/react";
 import css from "./style.module.css";
 
-function SavedRecipeCard({ recipeID }) {
-  const [recipeData, setRecipeData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [show, setShow] = useState(true);
-
-  useEffect(() => {
-    async function getRecipeData() {
-      try {
-        setIsLoading(true);
-        const fetchURL = `https://api.edamam.com/api/recipes/v2/${recipeID}?type=public&app_id=${process.env.NEXT_PUBLIC_EDAMAM_APP_ID}&app_key=${process.env.NEXT_PUBLIC_EDAMAM_APP_KEY}`;
-        const res = await fetch(fetchURL);
-        const data = await res.json();
-        setRecipeData(data.recipe);
-        setIsLoading(false);
-      } catch (err) {
-        console.log("Error 429 Too many requests to API");
-        setTimeout(getRecipeData, 15000);
-      }
-    }
-    getRecipeData();
-  }, [recipeID]);
-
-  return isLoading ? (
-    <h1>Loading......</h1>
-  ) : show ? (
+function SavedRecipeCard({ recipeID, data, deleteSavedRecipe }) {
+  return (
     <Grid.Container>
       <Grid>
         <div className={css.imageContainer}>
@@ -39,7 +16,7 @@ function SavedRecipeCard({ recipeID }) {
               layout="fill"
               width={120}
               height={120}
-              src={recipeData.image}
+              src={data.image}
               alt={"Recipe Image"}
             />
           </div>
@@ -49,7 +26,7 @@ function SavedRecipeCard({ recipeID }) {
         <Grid className={css.infoContainer}>
           <Grid>
             <div className={css.titleContainer}>
-              <h3>{recipeData.label.substr(0, 16)}</h3>
+              <h3>{data.label.substr(0, 16)}</h3>
             </div>
           </Grid>
           <Grid>
@@ -63,8 +40,8 @@ function SavedRecipeCard({ recipeID }) {
                 />
               </Grid>
               <Grid>
-                {recipeData.totalTime > 0 ? (
-                  <p>{recipeData.totalTime + "'"} </p>
+                {data.totalTime > 0 ? (
+                  <p>{data.totalTime + "'"} </p>
                 ) : (
                   <p>{"20'"}</p>
                 )}
@@ -72,7 +49,7 @@ function SavedRecipeCard({ recipeID }) {
             </div>
           </Grid>
           <Grid>
-            {recipeData.healthLabels.includes("Vegetarian") && (
+            {data.healthLabels.includes("Vegetarian") && (
               <Image
                 height={25}
                 width={25}
@@ -89,7 +66,7 @@ function SavedRecipeCard({ recipeID }) {
                 </Link>
               </a>
               <UnSaveRecipeButton
-                setShow={setShow}
+                deleteSavedRecipe={deleteSavedRecipe}
                 recipeID={recipeID}
               ></UnSaveRecipeButton>
             </div>
@@ -97,8 +74,6 @@ function SavedRecipeCard({ recipeID }) {
         </Grid>
       </Grid>
     </Grid.Container>
-  ) : (
-    <div></div>
   );
 }
 
