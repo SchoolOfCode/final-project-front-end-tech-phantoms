@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import css from "./styles.module.css";
 
 function AddToMealPlannerBtn({ day, setData, image, label, url }) {
-  const fetchURL = `http://localhost:3002/${day}`;
+  const fetchURL = `${process.env.NEXT_PUBLIC_API_URL}day/${day}`;
   let randomID = Math.floor(
     Math.random() * Math.floor(Math.random() * Date.now())
   );
@@ -22,7 +22,7 @@ function AddToMealPlannerBtn({ day, setData, image, label, url }) {
     getUpdatedData();
   };
   async function getUpdatedData() {
-    const res = await fetch(`http://localhost:3002/${day}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}day/${day}`);
     const data = await res.json();
     setData(data);
   }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import RecipeDayCard from "../RecipeDayCard";
-import { Modal, Button, Input } from "@nextui-org/react";
+import { Modal, Button, Input, Loading } from "@nextui-org/react";
 
 export function AddMealModal({ email, setData, day, currentData }) {
   const [ids, setIds] = useState(null);
@@ -43,25 +43,36 @@ export function AddMealModal({ email, setData, day, currentData }) {
         aria-labelledby="modal-title"
         open={visible}
         onClose={closeHandler}
-      > <Modal.Header>
-        <Input
-          type="text"
-          placeholder="Search Saved Recipes..."
-          value={input}
-          onChange={handleChange}
-        />
-      </Modal.Header>
+      >
+        {" "}
+        <Modal.Header>
+          <Input
+            type="text"
+            placeholder="Search Saved Recipes..."
+            value={input}
+            onChange={handleChange}
+          />
+        </Modal.Header>
         <Modal.Body>
-          <div>
-            {ids?.map((id) => {
-              return (
-                <>
-                  <RecipeDayCard id={id} key={id} setData={setData} day={day} />
-                  <br />
-                </>
-              );
-            })}
-          </div>
+          {ids ? (
+            <div>
+              {ids?.map((id) => {
+                return (
+                  <>
+                    <RecipeDayCard
+                      id={id}
+                      key={id}
+                      setData={setData}
+                      day={day}
+                    />
+                    <br />
+                  </>
+                );
+              })}
+            </div>
+          ) : (
+            <Loading type="default" />
+          )}
         </Modal.Body>
         <Modal.Footer>
           <Button auto css={{ background: "$ourGrey" }} onClick={cancelHandler}>
