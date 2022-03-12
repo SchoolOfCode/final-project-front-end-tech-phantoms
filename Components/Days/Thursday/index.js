@@ -17,7 +17,7 @@ function ThursdayCard({ Thursday, email, show }) {
   const [data, setData] = useState(Thursday);
 
   const handleDelete = async (id, day) => {
-    const fetchURL = `http://localhost:3002/${day}/${id}`;
+    const fetchURL = `http://localhost:3010/day/${day}/${id}`;
     const response = await fetch(fetchURL, {
       method: "DELETE",
       headers: {

@@ -12,13 +12,13 @@ export async function getServerSideProps(context) {
     SaturdayRes,
     SundayRes,
   ] = await Promise.all([
-    fetch("http://localhost:3002/Monday"),
-    fetch("http://localhost:3002/Tuesday"),
-    fetch("http://localhost:3002/Wednesday"),
-    fetch("http://localhost:3002/Thursday"),
-    fetch("http://localhost:3002/Friday"),
-    fetch("http://localhost:3002/Saturday"),
-    fetch("http://localhost:3002/Sunday"),
+    fetch("http://localhost:3010/day/Monday"),
+    fetch("http://localhost:3010/day/Tuesday"),
+    fetch("http://localhost:3010/day/Wednesday"),
+    fetch("http://localhost:3010/day/Thursday"),
+    fetch("http://localhost:3010/day/Friday"),
+    fetch("http://localhost:3010/day/Saturday"),
+    fetch("http://localhost:3010/day/Sunday"),
   ]);
   const [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday] =
     await Promise.all([
@@ -33,13 +33,13 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      Monday,
-      Tuesday,
-      Wednesday,
-      Thursday,
-      Friday,
-      Saturday,
-      Sunday,
+      Monday: Monday.Monday,
+      Tuesday: Tuesday.Tuesday,
+      Wednesday: Wednesday.Wednesday,
+      Thursday: Thursday.Thursday,
+      Friday: Friday.Friday,
+      Saturday: Saturday.Saturday,
+      Sunday: Sunday.Sunday,
     },
   };
 }

@@ -16,16 +16,19 @@ function RecipeDayCard({ id, setData, day }) {
         `https://api.edamam.com/api/recipes/v2/${id}?type=public&app_id=9c05887d&app_key=0bb927a239eeaacb5919ba8f44ce11e9`
       );
       const data = await res.json();
-      console.log(data.recipe);
       setRecipe(data.recipe);
-      console.log(data.recipe.healthLabels);
     }
     getRecipeByID();
   }, []);
   return (
     <div key={recipe.label} className={css.container}>
       <div className={css.imgContainer}>
-        <img src={recipe.image} className={css.image} alt="Recipe Image" borderRadius={50} />
+        <img
+          src={recipe.image}
+          className={css.image}
+          alt="Recipe Image"
+          borderradius={50}
+        />
       </div>
       <div>
         <h3>{recipe.label}</h3>
