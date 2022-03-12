@@ -16,24 +16,15 @@ import {
 function MondayCard({ Monday, email, show }) {
   const [data, setData] = useState(Monday);
 
-  const handleDelete = async (id, day) => {
-    const fetchURL = `${process.env.NEXT_PUBLIC_API_URL}day/${day}/${id}`;
-    const response = await fetch(fetchURL, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: null,
-    });
-
+  const handleDelete = async (id) => {
     const newData = data.filter((i) => {
       return i.id !== id;
     });
     setData(newData);
   };
 
-  function updateData(daata) {
-    setData(daata);
+  function updateData(newData) {
+    setData(newData);
   }
   return (
     <div>
