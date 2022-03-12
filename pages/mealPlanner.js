@@ -12,13 +12,13 @@ export async function getServerSideProps(context) {
     SaturdayRes,
     SundayRes,
   ] = await Promise.all([
-    fetch("http://localhost:3010/day/Monday"),
-    fetch("http://localhost:3010/day/Tuesday"),
-    fetch("http://localhost:3010/day/Wednesday"),
-    fetch("http://localhost:3010/day/Thursday"),
-    fetch("http://localhost:3010/day/Friday"),
-    fetch("http://localhost:3010/day/Saturday"),
-    fetch("http://localhost:3010/day/Sunday"),
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}day/Monday`),
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}day/Tuesday`),
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}day/Wednesday`),
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}day/Thursday`),
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}day/Friday`),
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}day/Saturday`),
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}day/Sunday`),
   ]);
   const [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday] =
     await Promise.all([
