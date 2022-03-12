@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import SavedRecipeCard from "./SavedRecipeCard";
 import { Container, Card } from "@nextui-org/react";
 import css from "./style.module.css";

@@ -1,4 +1,3 @@
-import React from "react";
 import NavBar from "../../Components/NavBar";
 import Recipes from "../../Components/Recipes";
 import SearchBar from "../../Components/SearchBar";

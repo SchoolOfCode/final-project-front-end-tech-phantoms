@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import RecipeDayCard from "../RecipeDayCard";
 import { Modal, Button, Input, Loading } from "@nextui-org/react";
 
@@ -88,4 +88,3 @@ export function AddMealModal({ email, setData, day, currentData }) {
     </div>
   );
 }
-// export default AddMealModal;
