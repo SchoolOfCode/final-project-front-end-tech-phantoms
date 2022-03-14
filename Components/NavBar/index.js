@@ -56,29 +56,35 @@ function NavBar() {
   }
 
   return (
-    <Grid.Container
-      gap={2}
-      display="flex"
-      alignItems="center"
-      justifyContent="space-between"
-    >
-      <Grid>
-        <Link href="/" passHref>
-          <Image
-            height={36}
-            width={36}
-            alt={"Phantom logo"}
-            src={"/little_ghost.svg"}
-          />
-        </Link>
-        <Link href="/" passHref>
-          <Text size="1em" weight="semibold" style={{ paddingLeft: "5px" }}>
-            Phantom Kitchen
-          </Text>
-        </Link>
-      </Grid>
+    <Grid.Container gap={1} justify="space-between">
+      <Link href="/" passHref>
+        <Grid>
+          <a>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <Image
+                height={36}
+                width={36}
+                src="/profile_icon.svg"
+                alt="profile logo"
+              />
+              <Text
+                size="1.5em"
+                weight="semibold"
+                style={{ paddingLeft: "5px" }}
+              >
+                Phantom Kitchen
+              </Text>
+            </div>
+          </a>
+        </Grid>
+      </Link>
 
-      <Grid sm>
+      <Grid>
         <Link href="/api/auth/[...auth0]" as="/api/auth/login" passHref>
           <Button light size="sm" auto>
             Sign up
