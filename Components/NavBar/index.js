@@ -13,8 +13,8 @@ function NavBar() {
     return (
       <Grid.Container gap={1} justify="space-between">
         <Link href="/" passHref>
-          <Grid>
-            <a>
+          <a>
+            <Grid>
               <div
                 style={{
                   display: "flex",
@@ -35,21 +35,21 @@ function NavBar() {
                   Phantom Kitchen
                 </Text>
               </div>
-            </a>
-          </Grid>
+            </Grid>
+          </a>
         </Link>
 
         <Link href="/profile" passHref>
-          <Grid>
-            <a>
+          <a>
+            <Grid>
               <Image
                 height={36}
                 width={36}
                 src="/profile_icon.svg"
                 alt="profile logo"
               />
-            </a>
-          </Grid>
+            </Grid>
+          </a>
         </Link>
       </Grid.Container>
     );
@@ -58,8 +58,8 @@ function NavBar() {
   return (
     <Grid.Container gap={1} justify="space-between">
       <Link href="/" passHref>
-        <Grid>
-          <a>
+        <a>
+          <Grid>
             <div
               style={{
                 display: "flex",
@@ -80,21 +80,27 @@ function NavBar() {
                 Phantom Kitchen
               </Text>
             </div>
-          </a>
-        </Grid>
+          </Grid>
+        </a>
       </Link>
 
-      <Grid>
-        <Link href="/api/auth/[...auth0]" as="/api/auth/login" passHref>
-          <Button light size="sm" auto>
-            Sign up
-          </Button>
-        </Link>
-        <Link href="/api/auth/[...auth0]" as="/api/auth/login" passHref>
-          <Button size="sm" rounded auto>
-            Log in
-          </Button>
-        </Link>
+      <Grid display="flex">
+        <div style={{ display: "flex" }}>
+          <Link href="/api/auth/[...auth0]" as="/api/auth/login" passHref>
+            <a>
+              <Button light size="sm" auto>
+                Sign up
+              </Button>
+            </a>
+          </Link>
+          <Link href="/api/auth/[...auth0]" as="/api/auth/login" passHref>
+            <a>
+              <Button size="sm" rounded auto>
+                Log in
+              </Button>
+            </a>
+          </Link>
+        </div>
       </Grid>
     </Grid.Container>
   );
