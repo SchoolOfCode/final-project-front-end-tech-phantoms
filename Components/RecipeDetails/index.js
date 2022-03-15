@@ -4,10 +4,11 @@ import Link from "next/link";
 import SaveRecipeButton from "../SaveRecipeButton";
 import { useUser } from "@auth0/nextjs-auth0";
 import NavBar from "../NavBar";
+import { Button } from "@nextui-org/react";
 
 const RecipeDetails = ({ data, recipeID }) => {
   const { user } = useUser();
-  
+
   async function addToShoppingList(ingredients) {
     const newItems = ingredients.map((ingredient) => {
       return {
@@ -18,9 +19,7 @@ const RecipeDetails = ({ data, recipeID }) => {
     });
     // console.log("Ingredients to Add", newItems);
     //post body of data to API to add to shopping list
-    const URI =
-      `${process.env.NEXT_PUBLIC_API_URL}shopping/` +
-      user.email;
+    const URI = `${process.env.NEXT_PUBLIC_API_URL}shopping/` + user.email;
     const response = await fetch(URI, {
       method: "POST",
       headers: {
@@ -30,12 +29,12 @@ const RecipeDetails = ({ data, recipeID }) => {
       body: JSON.stringify(newItems),
     });
     const updatedUserShoppingList = await response.json();
-    console.log(updatedUserShoppingList)
+    console.log(updatedUserShoppingList);
   }
 
   return (
     <div>
-    <NavBar/>
+      <NavBar />
       <Image
         alt="Recipe banner"
         src={data.image}
@@ -75,9 +74,15 @@ const RecipeDetails = ({ data, recipeID }) => {
       </p>
       <h2>Ingredients</h2>
       {user ? (
-        <button onClick={()=>{addToShoppingList(data.ingredients)}}>Add to 🛒 </button>
+        <Button
+          onClick={() => {
+            addToShoppingList(data.ingredients);
+          }}
+        >
+          Add to 🛒{" "}
+        </Button>
       ) : (
-        <button onClick={addToShoppingList}>Login to Add to 🛒 </button>
+        <Button onClick={addToShoppingList}>Login to Add to 🛒 </Button>
       )}
       <ul>
         {data.ingredients.map((item) => {
@@ -87,12 +92,13 @@ const RecipeDetails = ({ data, recipeID }) => {
       <h2>Preparation</h2>
       <Link href={data.url} passHref>
         <a target="_blank">
-          <button>Read Instructions</button>
+          <Button>Read Instructions</Button>
         </a>
       </Link>
       <p>on {data.source}</p>
       <hr />
       <SaveRecipeButton recipeID={recipeID} />
+      <br />
     </div>
   );
 };
