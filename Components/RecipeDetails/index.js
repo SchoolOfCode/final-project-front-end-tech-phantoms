@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SaveRecipeButton from "../SaveRecipeButton";
@@ -7,9 +7,11 @@ import NavBar from "../NavBar";
 import { Button } from "@nextui-org/react";
 
 const RecipeDetails = ({ data, recipeID }) => {
+  const [added, setAdded] = useState(false);
   const { user } = useUser();
 
   async function addToShoppingList(ingredients) {
+    setAdded(true);
     const newItems = ingredients.map((ingredient) => {
       return {
         ingredient: ingredient.food,
@@ -74,13 +76,17 @@ const RecipeDetails = ({ data, recipeID }) => {
       </p>
       <h2>Ingredients</h2>
       {user ? (
-        <Button
-          onClick={() => {
-            addToShoppingList(data.ingredients);
-          }}
-        >
-          Add to 🛒{" "}
-        </Button>
+        !added ? (
+          <Button
+            onClick={() => {
+              addToShoppingList(data.ingredients);
+            }}
+          >
+            Add to 🛒
+          </Button>
+        ) : (
+          <Button color="success">Added</Button>
+        )
       ) : (
         <Button onClick={addToShoppingList}>Login to Add to 🛒 </Button>
       )}

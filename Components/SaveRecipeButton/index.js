@@ -39,7 +39,7 @@ function SaveRecipeButton({ recipeID }) {
           </Button>
         ) : (
           <Button auto color="success">
-            Added
+            Saved
           </Button>
         )}
       </>
