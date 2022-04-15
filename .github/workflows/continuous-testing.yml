@@ -1,0 +1,28 @@
+name: continuous-testing
+on:
+  pull_request:
+    branches:
+      - 'main'
+      - 'dev'
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      # Cache node modules and next folder
+      - name: 📬 Caching
+        uses: actions/cache@v2
+        with:
+          path: |
+            **/node_modules
+            ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "16.13.1"
+      - run: pwd
+      - run: ls -a
+      - run: rm package-lock.json
+      - run: ls -a
+      - run: npm install
+      - run: npm run test

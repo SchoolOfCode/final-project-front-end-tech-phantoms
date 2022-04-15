@@ -1,0 +1,25 @@
+.imageContainer {
+  display: flex;
+  height: 120px;
+  width: 120px;
+}
+.image {
+  height: 100%;
+  width: 100%;
+}
+.infoContainer {
+  margin-left: 10px;
+}
+.titleContainer {
+  overflow: hidden;
+  max-width: 20ch;
+}
+.cookingContainer {
+  display: flex;
+  gap: 1vw;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 1vw;
+}

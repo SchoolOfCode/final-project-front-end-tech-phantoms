@@ -1,0 +1,44 @@
+Shopping List Plan
+
+Create a ShoppingList page
+    normal/state page with get data
+    Design a wireframe? Figure out what this page needs to look like
+
+On RecipeDetails page
+Create "Add to shopping list" button to add all ingredients for a recipe
+onClick function will add this ingredient to shoppingListData array
+Save this data when this button is clicked
+    ingredients is an array
+        for each ingredient save .quantity and .food (ingredient name)
+array = [
+    {
+        ingredient: .food,
+        quantity: .quantity,
+        needToBuy: false
+    },
+    {
+        ingredient: "semolina flour",
+        quantity: Math.round(1.0),
+        needToBuy: false
+    }
+]
+//onClick function POSTs the ingredient .food and .quantity to json-server db
+
+
+// ShoppingList page
+// Fetch shopping list data from json-server and display them
+// Delete shopping list item feature
+//     Checkbox that will strikethrough the text, post to json-server
+//     Button that will delete it, post to json-server
+
+--ShoppingList page
+Create this component according to Figma designs
+Fetch shopping list from API for this user
+Display shopping list
+Checkbox that will strikethrough the item text
+    update shoppingListData.js to strikethrough
+        don;t necessarily need a route for this
+Button that will delete item it's rendered on, remove item from array
+    will have a route by the time we get to this button
+
+Clear shopping list button
