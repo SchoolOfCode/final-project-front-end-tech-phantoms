@@ -20,6 +20,7 @@ module.exports = {
       "www.marthastewart.com",
       "food52.com",
       "www.foodnetwork.com",
+      "edamam-product-images.s3.amazonaws.com"
     ],
   },
 };
